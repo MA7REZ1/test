@@ -59,6 +59,16 @@ h1, h2, h3, h4 {
     padding: 0 2rem;
 }
 
+/* Responsive Grid Utility */
+.grid-res {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-gap-3 { gap: 3rem; }
+
 /* Navbar */
 .nav-fixed {
     position: fixed;
@@ -298,4 +308,81 @@ h1, h2, h3, h4 {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+/* Mobile Menu Toggle (CSS Only) */
+#menu-toggle { display: none; }
+.menu-btn { display: none; cursor: pointer; z-index: 1001; }
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    body { font-size: 14px; }
+    
+    .container { padding: 0 1rem; }
+    
+    /* Nav */
+    .nav-fixed .container { padding: 0 1rem; }
+    .menu-btn { display: block; font-size: 1.5rem; }
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--bg-dark);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+        z-index: 999;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+    
+    #menu-toggle:checked ~ .container .nav-links {
+        right: 0;
+    }
+    
+    .nav-cta { display: none; } /* Hide dashboard CTA on mobile nav */
+
+    /* Hero */
+    .hero-premium { padding-top: 100px; text-align: center; justify-content: center; }
+    .hero-image { display: none; } /* Hide absolute image on mobile */
+    .glass-hero-box { padding: 2rem; border-radius: 1.5rem; }
+    h1 { font-size: 2.5rem !important; }
+    .hero-content { max-width: 100%; }
+    
+    /* Grids */
+    .grid-3, .grid-4, .grid-res { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+    
+    /* Stats */
+    .stat-number { font-size: 2rem; }
+    
+    /* Services/Features */
+    .feature-box { padding: 1.5rem; }
+    
+    /* Details Page */
+    .details-hero { height: 40vh; padding-bottom: 2rem; }
+    .details-hero h1 { font-size: 2rem !important; }
+    .main-info, .sidebar { width: 100% !important; }
+    .details-grid { grid-template-columns: 1fr !important; }
+    .doc-list { grid-template-columns: 1fr; }
+    .glass-card { flex-direction: column; text-align: center; gap: 1.5rem !important; }
+    .glass-card img { width: 100% !important; }
+    
+    /* Spacing */
+    .py-huge { padding: 4rem 0; }
+    .mb-huge { margin-bottom: 3rem; }
+    
+    /* WhatsApp */
+    .whatsapp-float { 
+        bottom: 1rem; 
+        right: 1rem; 
+        padding: 0.6rem 1.2rem; 
+        font-size: 0.75rem;
+        gap: 0.5rem;
+    }
+    .whatsapp-icon { width: 24px; height: 24px; }
 }

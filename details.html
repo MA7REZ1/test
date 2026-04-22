@@ -90,9 +90,15 @@ if (!$data) {
 </head>
 <body>
     <nav class="nav-fixed">
+        <input type="checkbox" id="menu-toggle">
         <div class="container flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="index.php" class="gradient-text text-2xl font-bold" style="text-decoration: none;">GLOBAL SCHOLARS</a>
-            <a href="index.php" style="color: var(--primary); text-decoration: none; font-weight: 700;">← العودة للمنح</a>
+            
+            <label for="menu-toggle" class="menu-btn">☰</label>
+
+            <div class="nav-links" style="display: flex; gap: 2rem;">
+                <a href="index.php" style="color: var(--primary); text-decoration: none; font-weight: 700;">← العودة للمنح</a>
+            </div>
         </div>
     </nav>
 
@@ -102,7 +108,7 @@ if (!$data) {
             <h1 class="text-5xl md:text-6xl mb-8"><?php echo $data['title']; ?></h1>
             
             <!-- Requirements Overview -->
-            <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 600px;">
+            <div class="grid-res grid-3" style="max-width: 600px; gap: 1.5rem;">
                 <div class="req-pill">
                     <span class="label">السن المطلوب</span>
                     <span class="value">أقل من 30 سنة</span>
@@ -120,7 +126,7 @@ if (!$data) {
     </header>
 
     <main class="container py-huge">
-        <div class="grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;">
+        <div class="grid-res details-grid" style="grid-template-columns: 2fr 1fr; gap: 4rem;">
             <div class="main-info">
                 <section class="mb- huge" style="margin-bottom: 4rem;">
                     <h2 class="text-3xl mb-8" style="color: var(--primary);">عن المنحة</h2>

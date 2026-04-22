@@ -14,10 +14,14 @@
 <body>
     <!-- Navigation -->
     <nav class="nav-fixed">
+        <input type="checkbox" id="menu-toggle">
         <div class="container flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="logo">
                 <a href="#" class="gradient-text text-2xl font-bold" style="text-decoration: none; font-size: 1.8rem;">GLOBAL SCHOLARS</a>
             </div>
+            
+            <label for="menu-toggle" class="menu-btn">☰</label>
+
             <div class="nav-links" style="display: flex; gap: 2rem;">
                 <a href="#about" style="color: #fff; text-decoration: none; font-weight: 500;">عن المنصة</a>
                 <a href="#programs" style="color: #fff; text-decoration: none; font-weight: 500;">البرامج</a>
@@ -54,7 +58,7 @@
     <!-- Stats Section -->
     <section class="py-huge" style="background: var(--bg-dark);">
         <div class="container">
-            <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+            <div class="grid-res grid-4">
                 <div class="stat-item">
                     <div class="stat-number">500+</div>
                     <div class="text-text-muted">منحة نشطة</div>
@@ -82,7 +86,7 @@
                 <h2 class="text-4xl mb-4">لماذا تختار <span class="gradient-text">Global Scholars؟</span></h2>
                 <p class="text-text-muted">نحن نذهب إلى أبعد من مجرد قائمة منح</p>
             </div>
-            <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;">
+            <div class="grid-res grid-3 grid-gap-3">
                 <div class="feature-box">
                     <div class="icon mb-6" style="font-size: 3rem; margin-bottom: 1.5rem;">💎</div>
                     <h3 class="mb-4">منح حصرية</h3>
@@ -113,14 +117,14 @@
                 <a href="#" class="text-primary" style="color: var(--primary); font-weight: 700; text-decoration: none;">عرض جميع المنح ←</a>
             </div>
 
-            <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
+            <div class="grid-res grid-3" style="gap: 2.5rem;">
                 <!-- Turkey -->
                 <div class="card-scholarship">
                     <img src="assets/img/turkey.png" alt="Turkey" class="card-image">
                     <div class="tag mb-4">تركيا</div>
                     <h3 class="mb-4">منحة الحكومة التركية (YTB) 2026</h3>
                     <p class="text-text-muted mb-6" style="font-size: 0.9rem;">تغطية كاملة للرسوم الدراسية، تذكرة طيران، سكن جامعي، وراتب شهري ممتاز.</p>
-                    <a href="details.php?id=turkey" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
+                    <a href="details.html?id=turkey" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
                 </div>
 
                 <!-- UK -->
@@ -129,7 +133,7 @@
                     <div class="tag mb-4">بريطانيا</div>
                     <h3 class="mb-4">منحة تشيفنينغ (Chevening) للماجستير</h3>
                     <p class="text-text-muted mb-6" style="font-size: 0.9rem;">المنحة المرموقة في المملكة المتحدة للقادة والباحثين في كافة التخصصات.</p>
-                    <a href="details.php?id=uk" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
+                    <a href="details.html?id=uk" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
                 </div>
 
                 <!-- USA -->
@@ -138,7 +142,7 @@
                     <div class="tag mb-4">أمريكا</div>
                     <h3 class="mb-4">برنامج فولبرايت (Fulbright) العالمي</h3>
                     <p class="text-text-muted mb-6" style="font-size: 0.9rem;">فرصة استثنائية للدراسة في أفضل الجامعات الأمريكية مع تغطية شاملة.</p>
-                    <a href="details.php?id=usa" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
+                    <a href="details.html?id=usa" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
                 </div>
             </div>
         </div>
@@ -151,7 +155,7 @@
                 <h2 class="text-4xl mb-4">خدمات <span class="gradient-text">إضافية متكاملة</span></h2>
                 <p class="text-text-muted">نحن نرافقك في كل خطوة من رحلتك الدراسية</p>
             </div>
-            <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+            <div class="grid-res grid-4">
                 <div class="feature-box">
                     <div class="service-icon">📋</div>
                     <h3 class="mb-4">التقديم الاحترافي</h3>
@@ -179,7 +183,7 @@
     <!-- Footer -->
     <footer class="py-huge" style="border-top: 1px solid var(--glass-border);">
         <div class="container">
-            <div class="grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5rem;">
+            <div class="grid-res grid-3" style="gap: 5rem;">
                 <div>
                     <h2 class="gradient-text mb-6" style="font-size: 2rem;">GLOBAL SCHOLARS</h2>
                     <p class="text-text-muted" style="max-width: 400px;">
