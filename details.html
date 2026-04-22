@@ -1,0 +1,195 @@
+<!-- <?php
+require_once 'includes/db.php'; -->
+
+$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+// Mock data for the "Frontend Only" professional feel
+$mock_data = [
+    'turkey' => [
+        'title' => 'منحة الحكومة التركية (YTB) 2026',
+        'country' => 'تركيا',
+        'image' => 'assets/img/turkey.png',
+        'description' => 'تعد منحة الحكومة التركية من أقوى المنح الدراسية في العالم، حيث تغطي كافة التكاليف الدراسية والمعيشية للطلاب الدوليين.',
+        'benefits' => "• إعفاء كامل من الرسوم الدراسية\n• راتب شهري يتراوح بين 1000 إلى 1800 ليرة تركية\n• سكن جامعي مجاني\n• تذاكر طيران ذهاب وإياب\n• تأمين صحي شامل",
+        'requirements' => "• ألا يتجاوز عمر المتقدم 21 سنة للبكالوريوس، 30 للماجستير، و35 للدكتوراه\n• معدل لا يقل عن 70% للبكالوريوس و75% للدراسات العليا\n• جواز سفر ساري المفعول",
+        'link' => 'https://www.turkiyeburslari.gov.tr/'
+    ],
+    'uk' => [
+        'title' => 'منحة تشيفنينغ (Chevening) للماجستير',
+        'country' => 'بريطانيا',
+        'image' => 'assets/img/uk.png',
+        'description' => 'منحة تشيفنينغ هي برنامج المنح الدراسية العالمي للحكومة البريطانية، ممول من قبل وزارة الخارجية والكومنولث والتنمية والمنظمات الشريكة.',
+        'benefits' => "• تغطية كاملة للرسوم الدراسية\n• راتب معيشي شهري\n• تكاليف السفر من وإلى المملكة المتحدة\n• منح إضافية لتغطية النفقات الأساسية",
+        'requirements' => "• شهادة بكالوريوس بتقدير جيد جداً على الأقل\n• خبرة عملية لا تقل عن سنتين\n• العودة إلى البلد الأم بعد انتهاء المنحة",
+        'link' => 'https://www.chevening.org/'
+    ],
+    'usa' => [
+        'title' => 'برنامج فولبرايت (Fulbright) العالمي',
+        'country' => 'أمريكا',
+        'image' => 'assets/img/usa.png',
+        'description' => 'برنامج فولبرايت يوفر منحاً دراسية للطلاب والمهنيين والممارسين في جميع أنحاء العالم للدراسة في الولايات المتحدة الأمريكية.',
+        'benefits' => "• دعم مالي كامل للرسوم الجامعية\n• راتب شهري لتغطية السكن والمعيشة\n• التأمين الصحي\n• دورات تقوية في اللغة الإنجليزية",
+        'requirements' => "• إجادة اللغة الإنجليزية (TOEFL/IELTS)\n• التميز الأكاديمي والقيادي\n• مشروع بحثي أو تخصص محدد للدراسة",
+        'link' => 'https://foreign.fulbrightonline.org/'
+    ]
+];
+
+$data = null;
+if (array_key_exists($id, $mock_data)) {
+    $data = $mock_data[$id];
+} else {
+    // Try DB as fallback
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM scholarships WHERE id = ?");
+        $stmt->execute([$id]);
+        $data_db = $stmt->fetch();
+        if ($data_db) {
+            $data = [
+                'title' => $data_db['title'],
+                'country' => $data_db['country'],
+                'image' => $data_db['image_url'],
+                'description' => $data_db['description'],
+                'benefits' => $data_db['benefits'],
+                'requirements' => $data_db['requirements'],
+                'link' => $data_db['apply_link']
+            ];
+        }
+    } catch (Exception $e) {}
+}
+
+if (!$data) {
+    header("Location: index.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $data['title']; ?> | Global Scholars</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .details-hero {
+            height: 60vh;
+            background: linear-gradient(to bottom, rgba(11, 17, 32, 0.4), var(--bg-dark)), url('<?php echo $data['image']; ?>') center/cover;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 4rem;
+        }
+        .content-box {
+            white-space: pre-line;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        .sticky-card {
+            position: sticky;
+            top: 120px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-fixed">
+        <div class="container flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.php" class="gradient-text text-2xl font-bold" style="text-decoration: none;">GLOBAL SCHOLARS</a>
+            <a href="index.php" style="color: var(--primary); text-decoration: none; font-weight: 700;">← العودة للمنح</a>
+        </div>
+    </nav>
+
+    <header class="details-hero">
+        <div class="container animate-in">
+            <div class="tag mb-4"><?php echo $data['country']; ?></div>
+            <h1 class="text-5xl md:text-6xl mb-8"><?php echo $data['title']; ?></h1>
+            
+            <!-- Requirements Overview -->
+            <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 600px;">
+                <div class="req-pill">
+                    <span class="label">السن المطلوب</span>
+                    <span class="value">أقل من 30 سنة</span>
+                </div>
+                <div class="req-pill">
+                    <span class="label">المعدل الأدنى</span>
+                    <span class="value">75% فأكثر</span>
+                </div>
+                <div class="req-pill">
+                    <span class="label">تغطية الرسوم</span>
+                    <span class="value">100% (كاملة)</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-huge">
+        <div class="grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;">
+            <div class="main-info">
+                <section class="mb- huge" style="margin-bottom: 4rem;">
+                    <h2 class="text-3xl mb-8" style="color: var(--primary);">عن المنحة</h2>
+                    <div class="content-box">
+                        <?php echo $data['description']; ?>
+                    </div>
+                </section>
+
+                <section class="mb- huge" style="margin-bottom: 4rem;">
+                    <h2 class="text-3xl mb-8" style="color: var(--primary);">المزايا والفوائد</h2>
+                    <div class="content-box">
+                        <?php echo $data['benefits']; ?>
+                    </div>
+                </section>
+
+                <section class="mb- huge" style="margin-bottom: 4rem;">
+                    <h2 class="text-3xl mb-8" style="color: var(--primary);">الأوراق والمستندات المطلوبة</h2>
+                    <div class="glass-card" style="padding: 2.5rem; display: flex; gap: 2.5rem; align-items: center;">
+                        <img src="assets/img/docs.png" alt="Documents" style="width: 250px; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                        <div style="flex: 1;">
+                            <ul class="doc-list">
+                                <li class="doc-item">جواز سفر ساري المفعول</li>
+                                <li class="doc-item">صورة شخصية (خلفية بيضاء)</li>
+                                <li class="doc-item">شهادة المؤهل الدراسي</li>
+                                <li class="doc-item">كشف الدرجات الأكاديمي</li>
+                                <li class="doc-item">خطاب الحافز (Motivation)</li>
+                                <li class="doc-item">خطاب توصية عدد (2)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb- huge" style="margin-bottom: 4rem;">
+                    <h2 class="text-3xl mb-8" style="color: var(--primary);">الشروط والمتطلبات</h2>
+                    <div class="content-box">
+                        <?php echo $data['requirements']; ?>
+                    </div>
+                </section>
+            </div>
+
+            <div class="sidebar">
+                <div class="card-scholarship sticky-card" style="padding: 2.5rem; background: var(--glass);">
+                    <h3 class="mb-6">ابدأ التقديم الآن</h3>
+                    <p class="text-text-muted mb-8" style="font-size: 0.9rem;">هل تتوفر فيك الشروط المطلوبة؟ لا تتردد في البدء برسم مستقبلك اليوم عبر الرابط الرسمي للمنحة.</p>
+                    <a href="<?php echo $data['link']; ?>" target="_blank" class="btn-gold" style="width: 100%; text-align: center; padding: 1rem;">التقديم عبر الرابط الرسمي</a>
+                    <div class="mt-8 pt-8 border-t border-glass-border" style="border-top: 1px solid var(--glass-border); margin-top: 2rem; padding-top: 2rem;">
+                        <p class="text-center text-text-muted" style="font-size: 0.8rem; font-style: italic;">هذه المنحة ممولة بالكامل بنسبة 100%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 text-center border-t border-glass-border">
+        <div class="container">
+            <p class="text-text-muted">© 2026 Global Scholars Premium. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float animate-in" target="_blank">
+        <svg class="whatsapp-icon" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.6-2.8-23.6-8.7-45-27.7-16.6-14.8-27.8-33.1-31.1-38.6-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.6-6.5 8.3-9.7 2.8-3.2 3.7-5.6 5.6-9.3 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        <span>تحدث مع المستشار التعليمي</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-in').forEach(el => el.style.opacity = '1');
+        });
+    </script>
+</body>
+</html>
