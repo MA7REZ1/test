@@ -3,239 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Scholars | النخبة في المنح الدراسية العالمية</title>
+    <title>مكتب التميز للخدمات التعليمية | المنح الدراسية العالمية</title>
+    <meta name="description" content="مكتب التميز للخدمات التعليمية - مجموعة م.نادر عباس. بوابتك نحو أفضل المنح الدراسية الممولة بالكامل في أرقى جامعات العالم.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
-    <style>
-        .hero-premium { background-image: url('assets/img/hero.png'); background-size: cover; background-position: center; }
-        /* Add RTL specific adjustments if needed */
-        .flex-row-reverse { flex-direction: row-reverse; }
-    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-fixed">
-        <input type="checkbox" id="menu-toggle">
-        <div class="container flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="logo">
-                <a href="#" class="gradient-text text-2xl font-bold" style="text-decoration: none; font-size: 1.8rem;">GLOBAL SCHOLARS</a>
-            </div>
-            
-            <label for="menu-toggle" class="menu-btn">☰</label>
 
-            <div class="nav-links" style="display: flex; gap: 2rem;">
-                <a href="#about" style="color: #fff; text-decoration: none; font-weight: 500;">عن المنصة</a>
-                <a href="#programs" style="color: #fff; text-decoration: none; font-weight: 500;">البرامج</a>
-                <a href="#process" style="color: #fff; text-decoration: none; font-weight: 500;">طريقة التقديم</a>
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">
+            <div class="logo-icon">ت</div>
+            <div class="logo-text">
+                <span class="logo-main">مكتب التميز</span>
+                <span class="logo-sub">للخدمات التعليمية</span>
             </div>
-            <div class="nav-cta">
-                <a href="" class="btn-gold" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">لوحة التحكم</a>
+        </a>
+
+        <input type="checkbox" id="nav-toggle" hidden>
+
+        <div class="nav-menu">
+            <a href="#about" class="nav-link">عن مكتب التميز</a>
+            <a href="#programs" class="nav-link">المنح</a>
+            <a href="#services" class="nav-link">الخدمات</a>
+            <a href="https://wa.me/201503123481" class="nav-cta" target="_blank">تواصل الآن</a>
+        </div>
+
+        <label for="nav-toggle" class="nav-burger" id="burger">
+            <span></span><span></span><span></span>
+        </label>
+    </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="home">
+    <div class="hero-bg">
+        <div class="hero-orb orb1"></div>
+        <div class="hero-orb orb2"></div>
+        <div class="hero-orb orb3"></div>
+        <div class="hero-grid"></div>
+    </div>
+
+    <div class="hero-container">
+        <div class="hero-left" data-aos="fade-right">
+
+            <div class="hero-eyebrow">
+                <span class="eyebrow-dot"></span>
+                مجموعة م.نادر عباس التعليمية
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line1">مكتب التميز</span>
+                <span class="title-line2">للخدمات <em>التعليمية</em></span>
+            </h1>
+
+            <p class="hero-sub">
+                بوابتك نحو التعليم العالمي والتميز الأكاديمي.<br>
+                نوفر لك الوصول الحصري لأفضل المنح الممولة بالكامل في أرقى جامعات العالم.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#programs" class="btn-primary-hero">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    اكتشف المنح
+                </a>
+                <a href="https://wa.me/201503123481" class="btn-ghost-hero" target="_blank">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.858L0 24l6.302-1.51A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.502-5.203-1.381l-.374-.214-3.741.896.955-3.634-.234-.384A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                    استشارة مجانية
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hstat">
+                    <strong>500+</strong>
+                    <span>منحة نشطة</span>
+                </div>
+                <div class="hstat-div"></div>
+                <div class="hstat">
+                    <strong>12K+</strong>
+                    <span>طالب مقبول</span>
+                </div>
+                <div class="hstat-div"></div>
+                <div class="hstat">
+                    <strong>45</strong>
+                    <span>دولة</span>
+                </div>
+                <div class="hstat-div"></div>
+                <div class="hstat">
+                    <strong>98%</strong>
+                    <span>رضا العملاء</span>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-premium">
-        <div class="container">
-            <div class="hero-content animate-in">
-                <div class="glass-hero-box" style="text-align: center; margin: 0 auto;">
-                    <span class="tag mb-4" style="display: inline-block; margin-bottom: 1rem;">أكبر تجمع للمنح الدراسية العالمية</span>
-                    <div id="company-name" class="gradient-text" style="display: block; font-size: 1.8rem; font-weight: 800; letter-spacing: 0.3rem; margin-bottom: 0.5rem;"></div>
-                    <h1 class="text-6xl md:text-7xl mb-8" style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 2rem;">
-                        بوابتك نحو التعليم العالمي والتميز الأكاديمي
-                    </h1>
-                    <p class="text-xl text-text-muted mb-10" style="max-width: 600px; margin-bottom: 2.5rem; font-size: 1.25rem;">
-                        نحن نؤمن بأن التعليم حق للجميع. نوفر لك الوصول الحصري لأفضل المنح الممولة بالكامل في أرقى جامعات العالم بلمسة واحدة.
-                    </p>
-                    <div class="flex gap-6" style="display: flex; gap: 1.5rem;">
-                        <a href="#programs" class="btn-gold">اكتشف المنح الآن</a>
-                        <a href="#" class="btn-secondary">استشارة مجانية</a>
+        <div class="hero-right" data-aos="fade-left">
+            <div class="hero-card-stack">
+                <div class="hcard hcard-main">
+                    <div class="hcard-icon">🎓</div>
+                    <div>
+                        <div class="hcard-title">المنحة السعودية 2026</div>
+                        <div class="hcard-sub">مفتوحة الآن • 19 أبريل – 21 مايو</div>
+                    </div>
+                    <div class="hcard-badge">جديد</div>
+                </div>
+                <div class="hcard hcard-float hcard-f1">
+                    <span>🇬🇧</span>
+                    <div>
+                        <div class="hcard-title">Chevening</div>
+                        <div class="hcard-sub">بريطانيا</div>
                     </div>
                 </div>
+                <div class="hcard hcard-float hcard-f2">
+                    <span>🇺🇸</span>
+                    <div>
+                        <div class="hcard-title">Fulbright</div>
+                        <div class="hcard-sub">أمريكا</div>
+                    </div>
+                </div>
+                <div class="hcard-glow"></div>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- Stats Section -->
-    <section class="py-huge" style="background: var(--bg-dark);">
-        <div class="container">
-            <div class="grid-res grid-4">
-                <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="text-text-muted">منحة نشطة</div>
+    <div class="hero-scroll">
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<div class="statsbar">
+    <div class="statsbar-inner">
+        <div class="sbar-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>منح ممولة بالكامل 100%</span>
+        </div>
+        <div class="sbar-dot"></div>
+        <div class="sbar-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>متابعة على مدار الساعة</span>
+        </div>
+        <div class="sbar-dot"></div>
+        <div class="sbar-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>فريق خبراء متخصص</span>
+        </div>
+        <div class="sbar-dot"></div>
+        <div class="sbar-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>نسبة قبول 98%</span>
+        </div>
+    </div>
+</div>
+
+<!-- ========== WHY US ========== -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">لماذا نحن؟</span>
+            <h2 class="section-title">مكتب التميز <span class="gold">يختلف</span> عن الجميع</h2>
+            <p class="section-desc">نحن لا نبيع أحلاماً — نحن نصنع مستقبلاً حقيقياً</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feat-card">
+                <div class="feat-num">01</div>
+                <div class="feat-icon-wrap">💎</div>
+                <h3>منح حصرية</h3>
+                <p>نصل إلى منح دراسية لا يتم الإعلان عنها في المنصات العامة بفضل شبكة علاقاتنا الدولية.</p>
+            </div>
+            <div class="feat-card feat-card-highlight">
+                <div class="feat-num">02</div>
+                <div class="feat-icon-wrap">⚙️</div>
+                <h3>دعم متكامل</h3>
+                <p>فريقنا يرافقك من اللحظة الأولى حتى وصولك لمقعدك الدراسي — لا تقلق من أي شيء.</p>
+                <div class="feat-glow"></div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-num">03</div>
+                <div class="feat-icon-wrap">🌍</div>
+                <h3>تغطية عالمية</h3>
+                <p>نغطي كافة التخصصات في أكثر من 45 دولة حول العالم بأعلى معدلات القبول.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SCHOLARSHIPS ========== -->
+<section class="section section-dark" id="programs">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">المنح المتاحة</span>
+            <h2 class="section-title">منح <span class="gold">النخبة المختارة</span></h2>
+            <p class="section-desc">فرص ممولة بالكامل تنتظرك الآن</p>
+        </div>
+
+        <div class="scholarships-grid">
+            <!-- Saudi -->
+            <div class="schol-card schol-featured">
+                <div class="schol-badge">الأكثر طلباً</div>
+                <div class="schol-img-wrap">
+                    <img src="assets/img/saudi.png" alt="المنحة السعودية" class="schol-img" onerror="this.parentElement.style.background='linear-gradient(135deg,#0d4f2e,#1a8a4a)'">
+                    <div class="schol-country">🇸🇦 السعودية</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">12K+</div>
-                    <div class="text-text-muted">طالب مقبول</div>
+                <div class="schol-body">
+                    <div class="schol-meta">
+                        <span class="schol-date">📅 19 أبريل – 21 مايو 2026</span>
+                        <span class="schol-type">منحة كاملة</span>
+                    </div>
+                    <h3>المنحة السعودية 2026</h3>
+                    <p>منحة مميزة للدراسة في المملكة العربية السعودية بشروط واضحة وفرص قبول عالية لمن يستوفي المتطلبات.</p>
+                    <div class="schol-tags">
+                        <span>جواز ساري</span>
+                        <span>معدل 70%+</span>
+                        <span>فحص طبي</span>
+                    </div>
+                    <a href="details.html?id=saudi" class="schol-btn">التفاصيل والتقديم →</a>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">45</div>
-                    <div class="text-text-muted">دولة مشاركة</div>
+            </div>
+
+            <!-- UK -->
+            <div class="schol-card">
+                <div class="schol-img-wrap">
+                    <img src="assets/img/uk.png" alt="Chevening" class="schol-img" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a2a6c,#b21f1f)'">
+                    <div class="schol-country">🇬🇧 بريطانيا</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="text-text-muted">نسبة الرضا</div>
+                <div class="schol-body">
+                    <div class="schol-meta">
+                        <span class="schol-type">ماجستير</span>
+                    </div>
+                    <h3>منحة Chevening</h3>
+                    <p>المنحة الحكومية البريطانية المرموقة للقادة والباحثين في كافة التخصصات.</p>
+                    <a href="details.html?id=uk" class="schol-btn schol-btn-outline">التفاصيل →</a>
+                </div>
+            </div>
+
+            <!-- USA -->
+            <div class="schol-card">
+                <div class="schol-img-wrap">
+                    <img src="assets/img/usa.png" alt="Fulbright" class="schol-img" onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1628,#c0392b)'">
+                    <div class="schol-country">🇺🇸 أمريكا</div>
+                </div>
+                <div class="schol-body">
+                    <div class="schol-meta">
+                        <span class="schol-type">بكالوريوس / ماجستير</span>
+                    </div>
+                    <h3>برنامج Fulbright</h3>
+                    <p>فرصة استثنائية للدراسة في أفضل الجامعات الأمريكية مع تغطية مالية شاملة.</p>
+                    <a href="details.html?id=usa" class="schol-btn schol-btn-outline">التفاصيل →</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Why Us Section -->
-    <section class="py-huge" id="about">
-        <div class="container">
-            <div class="text-center mb-huge" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="text-4xl mb-4">لماذا تختار <span class="gradient-text">Global Scholars؟</span></h2>
-                <p class="text-text-muted">نحن نذهب إلى أبعد من مجرد قائمة منح</p>
+<!-- ========== SERVICES ========== -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">خدماتنا</span>
+            <h2 class="section-title">نرافقك في <span class="gold">كل خطوة</span></h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="srv-card">
+                <div class="srv-icon">📋</div>
+                <h4>التقديم الاحترافي</h4>
+                <p>نتقدم بدلاً عنك في أكثر من منحة لضمان أعلى نسب القبول.</p>
             </div>
-            <div class="grid-res grid-3 grid-gap-3">
-                <div class="feature-box">
-                    <div class="icon mb-6" style="font-size: 3rem; margin-bottom: 1.5rem;">💎</div>
-                    <h3 class="mb-4">منح حصرية</h3>
-                    <p class="text-text-muted">نصل إلى منح دراسية لا يتم الإعلان عنها في المنصات العامة.</p>
-                </div>
-                <div class="feature-box">
-                    <div class="icon mb-6" style="font-size: 3rem; margin-bottom: 1.5rem;">⚙️</div>
-                    <h3 class="mb-4">دعم فني متكامل</h3>
-                    <p class="text-text-muted">فريقنا يساعدك في تجهيز ملف التقديم وخطاب النوايا باحترافية.</p>
-                </div>
-                <div class="feature-box">
-                    <div class="icon mb-6" style="font-size: 3rem; margin-bottom: 1.5rem;">🌍</div>
-                    <h3 class="mb-4">تغطية شاملة</h3>
-                    <p class="text-text-muted">نغطي كافة التخصصات العلمية والأدبية في أكثر من 40 دولة.</p>
-                </div>
+            <div class="srv-card">
+                <div class="srv-icon">📜</div>
+                <h4>استخراج الشهادات</h4>
+                <p>مساعدتك في استخراج الشهادات وتصديقها من الجهات المختصة.</p>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">✈️</div>
+                <h4>حجز الطيران</h4>
+                <p>توفير أفضل عروض الطيران للطلاب مع خصومات خاصة.</p>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">🛂</div>
+                <h4>التأشيرات والموافقات</h4>
+                <p>تسهيل استخراج الموافقات الأمنية والتأشيرات اللازمة.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Featured Scholarships -->
-    <section class="py-huge" id="programs" style="background: rgba(255,255,255,0.02);">
-        <div class="container">
-            <div class="flex justify-between items-end mb-12" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem;">
-                <div>
-                    <h2 class="text-4xl">منح <span class="gradient-text">النخبة المختارة</span></h2>
-                    <p class="text-text-muted mt-2">فرص ممولة بالكامل تنتظرك الآن</p>
-                </div>
-                <a href="#" class="text-primary" style="color: var(--primary); font-weight: 700; text-decoration: none;">عرض جميع المنح ←</a>
-            </div>
-
-            <div class="grid-res grid-3" style="gap: 2.5rem;">
-                <!-- Turkey -->
-                <div class="card-scholarship">
-                    <img src="assets/img/turkey.png" alt="Turkey" class="card-image">
-                    <div class="tag mb-4">تركيا</div>
-                    <h3 class="mb-4">منحة الحكومة التركية (YTB) 2026</h3>
-                    <p class="text-text-muted mb-6" style="font-size: 0.9rem;">تغطية كاملة للرسوم الدراسية، تذكرة طيران، سكن جامعي، وراتب شهري ممتاز.</p>
-                    <a href="details.html?id=turkey" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
-                </div>
-
-                <!-- UK -->
-                <div class="card-scholarship">
-                    <img src="assets/img/uk.png" alt="UK" class="card-image">
-                    <div class="tag mb-4">بريطانيا</div>
-                    <h3 class="mb-4">منحة تشيفنينغ (Chevening) للماجستير</h3>
-                    <p class="text-text-muted mb-6" style="font-size: 0.9rem;">المنحة المرموقة في المملكة المتحدة للقادة والباحثين في كافة التخصصات.</p>
-                    <a href="details.html?id=uk" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
-                </div>
-
-                <!-- USA -->
-                <div class="card-scholarship">
-                    <img src="assets/img/usa.png" alt="USA" class="card-image">
-                    <div class="tag mb-4">أمريكا</div>
-                    <h3 class="mb-4">برنامج فولبرايت (Fulbright) العالمي</h3>
-                    <p class="text-text-muted mb-6" style="font-size: 0.9rem;">فرصة استثنائية للدراسة في أفضل الجامعات الأمريكية مع تغطية شاملة.</p>
-                    <a href="details.html?id=usa" class="btn-gold" style="width: 100%; text-align: center; padding: 0.8rem;">التفاصيل والتقديم</a>
-                </div>
+<!-- ========== CTA SECTION ========== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box">
+            <div class="cta-orb"></div>
+            <h2>هل أنت مستعد لبدء رحلتك؟</h2>
+            <p>تواصل مع فريق مكتب التميز الآن واحصل على استشارتك المجانية</p>
+            <div class="cta-btns">
+                <a href="https://wa.me/201503123481" class="btn-primary-hero" target="_blank">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.858L0 24l6.302-1.51A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.502-5.203-1.381l-.374-.214-3.741.896.955-3.634-.234-.384A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                    تواصل عبر واتساب
+                </a>
+                <a href="tel:01503123481" class="btn-ghost-hero">📞 01503123481</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Services Section -->
-    <section class="py-huge" id="services">
-        <div class="container">
-            <div class="text-center mb-huge" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="text-4xl mb-4">خدمات <span class="gradient-text">إضافية متكاملة</span></h2>
-                <p class="text-text-muted">نحن نرافقك في كل خطوة من رحلتك الدراسية</p>
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="nav-logo" style="margin-bottom:1.5rem">
+                    <div class="logo-icon">ت</div>
+                    <div class="logo-text">
+                        <span class="logo-main">مكتب التميز</span>
+                        <span class="logo-sub">للخدمات التعليمية</span>
+                    </div>
+                </div>
+                <p>مجموعة م.نادر عباس التعليمية — شركاؤك في رسم مستقبلك الأكاديمي على الخريطة العالمية.</p>
             </div>
-            <div class="grid-res grid-4">
-                <div class="feature-box">
-                    <div class="service-icon">📋</div>
-                    <h3 class="mb-4">التقديم الاحترافي</h3>
-                    <p class="text-text-muted" style="font-size: 0.85rem;">نقوم بالتقديم بدلاً عنك في أكثر من منحة لضمان أعلى نسب القبول.</p>
-                </div>
-                <div class="feature-box">
-                    <div class="service-icon">📜</div>
-                    <h3 class="mb-4">استخراج الشهادات</h3>
-                    <p class="text-text-muted" style="font-size: 0.85rem;">مساعدتك في استخراج الشهادات السودانية (ثانوي/أساس) وتصديقها.</p>
-                </div>
-                <div class="feature-box">
-                    <div class="service-icon">✈️</div>
-                    <h3 class="mb-4">حجز الطيران</h3>
-                    <p class="text-text-muted" style="font-size: 0.85rem;">توفير أفضل عروض الطيران للطلاب مع خصومات خاصة للحقائب الإضافية.</p>
-                </div>
-                <div class="feature-box">
-                    <div class="service-icon">🛂</div>
-                    <h3 class="mb-4">الموافقات الأمنية</h3>
-                    <p class="text-text-muted" style="font-size: 0.85rem;">تسهيل استخراج الموافقات الأمنية والتأشيرات اللازمة لدخول دولة الدراسة.</p>
-                </div>
+            <div class="footer-col">
+                <h5>روابط سريعة</h5>
+                <a href="#about">عن مكتب التميز</a>
+                <a href="#programs">المنح الدراسية</a>
+                <a href="#services">خدماتنا</a>
+            </div>
+            <div class="footer-col">
+                <h5>تواصل معنا</h5>
+                <a href="tel:01503123481">📞 01503123481</a>
+                <a href="tel:01119077461">📞 01119077461</a>
+                <a href="https://wa.me/201503123481" target="_blank">💬 واتساب</a>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-huge" style="border-top: 1px solid var(--glass-border);">
-        <div class="container">
-            <div class="grid-res grid-3" style="gap: 5rem;">
-                <div>
-                    <h2 class="gradient-text mb-6" style="font-size: 2rem;">GLOBAL SCHOLARS</h2>
-                    <p class="text-text-muted" style="max-width: 400px;">
-                        نحن لسنا مجرد وسيط، نحن شركاؤك في رسم ملامح مستقبلك الأكاديمي والمهني على الخريطة العالمية.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="mb-6">روابط سريعة</h4>
-                    <ul style="list-style: none;">
-                        <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">الرئيسية</a></li>
-                        <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">عن المنحة</a></li>
-                        <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">الأسئلة الشائعة</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="mb-6">تواصل معنا</h4>
-                    <p class="text-text-muted">مصر , الدقي, الجيزة</p>
-                    <p class="text-text-muted">support@globalscholars.com</p>
-                </div>
-            </div>
-            <div class="mt-20 pt-8 border-t border-glass-border text-center text-text-muted" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--glass-border); text-align: center;">
-                <p>© 2026 جميع الحقوق محفوظة لـ Global Scholars Premium.</p>
-            </div>
+        <div class="footer-bottom">
+            <p>© 2026 مكتب التميز للخدمات التعليمية | مجموعة م.نادر عباس — جميع الحقوق محفوظة</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/01282507177" class="whatsapp-float animate-in" target="_blank">
-        <svg class="whatsapp-icon" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.6-2.8-23.6-8.7-45-27.7-16.6-14.8-27.8-33.1-31.1-38.6-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.6-6.5 8.3-9.7 2.8-3.2 3.7-5.6 5.6-9.3 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-        <span>تحدث مع المستشار التعليمي</span>
-    </a>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/201503123481" class="wa-float" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.858L0 24l6.302-1.51A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.502-5.203-1.381l-.374-.214-3.741.896.955-3.634-.234-.384A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
 
-    <script>
-        // Typewriter Effect
-        const text = "GLOBAL SCHOLARS";
-        const speed = 100;
-        let i = 0;
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const nb = document.getElementById('navbar');
+    nb.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("company-name").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
+// Intersection Observer for animations
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
         }
+    });
+}, { threshold: 0.15 });
 
-        // Simple entrance animation trigger
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.animate-in');
-            elements.forEach(el => el.style.opacity = '1');
-            setTimeout(typeWriter, 1000); // Start typing after 1s
-        });
-    </script>
+document.querySelectorAll('.feat-card, .schol-card, .srv-card, .hero-left, .hero-right').forEach(el => {
+    el.classList.add('anim-el');
+    obs.observe(el);
+});
+
+// Counter animation
+function animateCount(el, target) {
+    let cur = 0;
+    const step = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = cur + (el.dataset.suffix || '');
+        if (cur >= target) clearInterval(timer);
+    }, 25);
+}
+</script>
 </body>
 </html>
