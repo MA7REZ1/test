@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { ProductCard } from "@/components/ProductCard";
 import { productsStore, type Product, type ProductCategory } from "@/lib/products-store";
 
@@ -34,7 +32,6 @@ function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader />
       <div className="container mx-auto px-4 py-12">
         <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
         <p className="mb-8 text-muted-foreground">{filtered.length} عنصر</p>
@@ -53,7 +50,6 @@ function ProductsPage() {
           </div>
         )}
       </div>
-      <SiteFooter />
     </div>
   );
 }

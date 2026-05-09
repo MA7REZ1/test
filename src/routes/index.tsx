@@ -1,200 +1,136 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
-import { ProductCard } from "@/components/ProductCard";
-import { productsStore, type Product } from "@/lib/products-store";
-import heroImg from "@/assets/hero-electronics.jpg";
 import { Phone, MessageCircle, ShoppingCart, Tag, Truck, ShieldCheck, Zap, Server, Monitor, Laptop, HardDrive } from "lucide-react";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "M&S للإلكترونيات — شراء وبيع أجهزة الشركات الراكدة والمستعملة" },
-      { name: "description", content: "نشتري ونبيع أجهزة الكمبيوتر واللاب توب والسيرفرات والشاشات الراكدة والمستعملة من الشركات والبنوك والمصانع. أعلى سعر، سرعة معاينة، تغطية كل مصر." },
-      { property: "og:title", content: "M&S للإلكترونيات — شراء وبيع أجهزة الشركات" },
-      { property: "og:description", content: "أعلى سعر للأجهزة الإلكترونية الراكدة والمستعملة. نخدم الشركات والبنوك والمصانع داخل مصر." },
-    ],
-  }),
   component: Index,
 });
 
 function Index() {
-  const [products, setProducts] = useState<Product[]>([]);
-  useEffect(() => {
-    setProducts(productsStore.list());
-    return productsStore.subscribe(() => setProducts(productsStore.list()));
-  }, []);
-
-  const sellItems = products.filter((p) => p.category === "sell").slice(0, 6);
-  const buyItems = products.filter((p) => p.category === "buy").slice(0, 3);
-
   return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
-
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="أجهزة إلكترونية" width={1920} height={1080} className="h-full w-full object-cover opacity-30 animate-fade-in" />
-          <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl animate-blob" />
-          <div className="absolute top-1/3 -left-20 h-80 w-80 rounded-full bg-gold/20 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
-          <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-primary/20 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
-        </div>
-        <div className="container relative mx-auto px-4 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold animate-fade-up animate-pulse-glow">
-              <Zap className="h-3 w-3" /> أعلى سعر في السوق
+      <section className="relative min-h-[90vh] overflow-hidden bg-gradient-hero flex items-center">
+        {/* Animated Background Blobs */}
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-blob" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-gold/10 rounded-full blur-[100px] animate-blob delay-500" />
+        
+        <div className="container relative mx-auto px-4 py-20">
+          <div className="max-w-3xl animate-fade-up">
+            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-sm font-medium text-gold animate-pulse-glow">
+              <Zap className="h-4 w-4" /> أعلى سعر في السوق المصري
             </span>
-            <h1 className="mb-4 text-4xl font-extrabold leading-tight md:text-6xl animate-fade-up delay-100">
+            <h1 className="mb-6 text-5xl font-black leading-tight md:text-7xl tracking-tight">
               شركة <span className="text-gold">M&S</span> لشراء وبيع
               <br />
               <span className="text-gradient-shimmer animate-shimmer">الأجهزة الإلكترونية</span>
             </h1>
-            <p className="mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl animate-fade-up delay-200">
-              نشتري ونبيع الأجهزة الراكدة والمستعملة والجديدة من داخل الشركات والبنوك والمصانع وجميع المؤسسات داخل مصر.
+            <p className="mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed">
+              نحن المتخصصون في إعادة تدوير وتجارة الأجهزة الراكدة والمستعملة من الشركات والبنوك والمصانع. نضمن لك أعلى تقييم مالي وأسرع تنفيذ.
             </p>
-            <div className="flex flex-wrap gap-3 animate-fade-up delay-300">
-              <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-6 py-3 font-bold text-gold-foreground shadow-gold transition-transform hover:scale-105">
-                <MessageCircle className="h-5 w-5" /> تواصل واتساب
+            <div className="flex flex-wrap gap-4">
+              <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-gold px-8 py-4 font-bold text-gold-foreground shadow-gold hover-lift">
+                <MessageCircle className="h-5 w-5 transition-transform group-hover:rotate-12" /> تواصل عبر واتساب
               </a>
-              <a href="tel:01011965099" className="inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-6 py-3 font-bold text-primary-foreground shadow-glow transition-transform hover:scale-105">
-                <Phone className="h-5 w-5" /> <span dir="ltr">01011965099</span>
+              <a href="tel:01011965099" className="group inline-flex items-center gap-3 rounded-2xl bg-white/10 border border-white/20 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white/20 transition-all hover-lift">
+                <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" /> <span dir="ltr">01011965099</span>
               </a>
-              <Link to="/products" search={{ cat: "sell" }} className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/60 px-6 py-3 font-semibold backdrop-blur transition-colors hover:bg-card">
-                <ShoppingCart className="h-5 w-5" /> تصفح المنتجات
-              </Link>
-            </div>
-
-            <div className="mt-10 hidden gap-4 md:flex animate-fade-up delay-500">
-              {[Laptop, Server, Monitor, HardDrive].map((Icon, i) => (
-                <div
-                  key={i}
-                  className="glass flex h-16 w-16 items-center justify-center rounded-2xl animate-float"
-                  style={{ animationDelay: `${i * 0.4}s` }}
-                >
-                  <Icon className="h-7 w-7 text-primary" />
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Two main sections: Buy / Sell */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid gap-6 md:grid-cols-2">
-          <Link to="/products" search={{ cat: "buy" }} className="group relative overflow-hidden rounded-2xl bg-gradient-card p-8 shadow-elegant transition-all hover:-translate-y-1 hover:shadow-gold">
-            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-gold/10 blur-3xl" />
-            <Tag className="mb-4 h-10 w-10 text-gold" />
-            <h2 className="mb-2 text-2xl font-bold">نشتري منك</h2>
-            <p className="mb-4 text-muted-foreground">شراء كميات الأجهزة الراكدة والمتكهنة من الشركات والبنوك والمصانع — نجيلك لحد عندك.</p>
-            <span className="font-semibold text-gold group-hover:underline">عرض ما نشتريه ←</span>
-          </Link>
-
-          <Link to="/products" search={{ cat: "sell" }} className="group relative overflow-hidden rounded-2xl bg-gradient-card p-8 shadow-elegant transition-all hover:-translate-y-1 hover:shadow-glow">
-            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
-            <ShoppingCart className="mb-4 h-10 w-10 text-primary" />
-            <h2 className="mb-2 text-2xl font-bold">نبيع لك</h2>
-            <p className="mb-4 text-muted-foreground">أجهزة كمبيوتر، لاب توب، سيرفرات، سويتشات، وشاشات — بكميات وبأسعار للجملة.</p>
-            <span className="font-semibold text-primary group-hover:underline">تصفح المنتجات ←</span>
-          </Link>
-        </div>
-      </section>
-
-      {/* What we buy categories */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="mb-2 text-center text-3xl font-bold">ما الذي نشتريه؟</h2>
-        <p className="mb-10 text-center text-muted-foreground">نشتري جميع أنواع الأجهزة الإلكترونية مهما كانت الحالة</p>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {[
-            { icon: Laptop, label: "كمبيوتر ولاب توب" },
-            { icon: Server, label: "سيرفرات وسنترالات" },
-            { icon: HardDrive, label: "سويتشات وشبكات" },
-            { icon: Monitor, label: "شاشات بكل أنواعها" },
-          ].map(({ icon: Icon, label }, i) => (
-            <div
-              key={label}
-              className="group rounded-xl bg-gradient-card p-6 text-center shadow-elegant transition-all hover:-translate-y-2 hover:shadow-glow"
-              style={{ animationDelay: `${i * 0.1}s` }}
-            >
-              <Icon className="mx-auto mb-3 h-10 w-10 text-primary transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110" />
-              <div className="font-semibold">{label}</div>
+      {/* Main Actions: Buy / Sell */}
+      <section className="container mx-auto px-4 py-24">
+        <div className="grid gap-8 md:grid-cols-2">
+          <Link to="/products?category=buy" className="group glass p-10 rounded-3xl hover-lift animate-fade-up delay-100">
+            <div className="mb-6 inline-flex p-4 rounded-2xl bg-gold/10 text-gold">
+              <Tag className="h-10 w-10" />
             </div>
-          ))}
+            <h2 className="mb-4 text-3xl font-bold">نشتري منك</h2>
+            <p className="mb-6 text-muted-foreground text-lg">نشتري كميات الأجهزة الراكدة والمتكهنة من الشركات، البنوك، والمصانع. نصل إليك في أي مكان في مصر.</p>
+            <span className="inline-flex items-center gap-2 font-bold text-gold group-hover:gap-4 transition-all">
+              شاهد قائمة ما نشتريه <span className="text-2xl">←</span>
+            </span>
+          </Link>
+
+          <Link to="/products?category=sell" className="group glass p-10 rounded-3xl hover-lift animate-fade-up delay-200">
+            <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/10 text-primary">
+              <ShoppingCart className="h-10 w-10" />
+            </div>
+            <h2 className="mb-4 text-3xl font-bold">نبيع لك</h2>
+            <p className="mb-6 text-muted-foreground text-lg">نوفر أفضل أجهزة الكمبيوتر، اللاب توب، والسيرفرات بأسعار الجملة وبكميات تناسب احتياجاتك.</p>
+            <span className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-4 transition-all">
+              تصفح الأجهزة المتاحة <span className="text-2xl">←</span>
+            </span>
+          </Link>
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid gap-6 md:grid-cols-3">
+      {/* Categories Grid */}
+      <section className="container mx-auto px-4 py-24 border-t border-white/5">
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="mb-4 text-4xl font-black">ما الذي نشتريه؟</h2>
+          <p className="text-muted-foreground text-lg">نغطي كافة التخصصات الإلكترونية بأعلى دقة في التقييم</p>
+        </div>
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
           {[
-            { icon: Tag, title: "أعلى سعر", desc: "نضمن أفضل الأسعار في السوق المصري للأجهزة بكل حالاتها." },
-            { icon: Zap, title: "سرعة في المعاينة", desc: "فريق معاينة سريع يوصل لمكانك في أي محافظة." },
-            { icon: ShieldCheck, title: "التزام ومصداقية", desc: "تعامل احترافي مع الشركات والبنوك والمؤسسات." },
-            { icon: Truck, title: "استلام من مكانك", desc: "بنشتري من أي مكان داخل مصر، وهنجيلك لحد عندك." },
-            { icon: Server, title: "كميات وجملة", desc: "نتعامل بالكميات الكبيرة ونوفر منتجات للجملة." },
-            { icon: ShieldCheck, title: "خصوصية تامة", desc: "نضمن سرية البيانات عند شراء أجهزة من البنوك والمؤسسات." },
-          ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="rounded-xl bg-gradient-card p-6 shadow-elegant">
-              <Icon className="mb-3 h-8 w-8 text-gold" />
-              <h3 className="mb-1 font-bold">{title}</h3>
+            { icon: Laptop, label: "أجهزة اللاب توب", desc: "جميع الموديلات" },
+            { icon: Server, label: "السيرفرات والشبكات", desc: "بنيتك التحتية" },
+            { icon: HardDrive, label: "السويتشات والتخزين", desc: "حلول متكاملة" },
+            { icon: Monitor, label: "الشاشات والمعدات", desc: "بكافة أنواعها" },
+          ].map(({ icon: Icon, label, desc }, idx) => (
+            <div key={label} className={`glass p-8 rounded-3xl text-center hover-lift animate-fade-up`} style={{ animationDelay: `${idx * 0.1}s` }}>
+              <div className="mx-auto mb-6 inline-flex p-4 rounded-2xl bg-white/5 text-primary group-hover:scale-110 transition-transform">
+                <Icon className="h-8 w-8" />
+              </div>
+              <h3 className="mb-2 font-bold text-xl">{label}</h3>
               <p className="text-sm text-muted-foreground">{desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* For sale grid */}
-      {sellItems.length > 0 && (
-        <section className="container mx-auto px-4 py-12">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <h2 className="text-3xl font-bold">منتجات معروضة للبيع</h2>
-              <p className="text-muted-foreground">أجهزة جاهزة للتسليم بكميات</p>
-            </div>
-            <Link to="/products" search={{ cat: "sell" }} className="text-sm font-semibold text-primary hover:underline">عرض الكل ←</Link>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {sellItems.map((p) => <ProductCard key={p.id} product={p} />)}
-          </div>
-        </section>
-      )}
-
-      {/* What we buy listings */}
-      {buyItems.length > 0 && (
-        <section className="container mx-auto px-4 py-12">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <h2 className="text-3xl font-bold">طلبات شراء حالية</h2>
-              <p className="text-muted-foreground">عندنا طلبات شراء على هذه الأصناف الآن</p>
-            </div>
-            <Link to="/products" search={{ cat: "buy" }} className="text-sm font-semibold text-gold hover:underline">عرض الكل ←</Link>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {buyItems.map((p) => <ProductCard key={p.id} product={p} />)}
-          </div>
-        </section>
-      )}
-
-      {/* CTA */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-10 text-center shadow-glow md:p-16">
-          <h2 className="mb-3 text-3xl font-extrabold text-primary-foreground md:text-4xl">عندك أجهزة راكدة؟ اتصل بينا الآن</h2>
-          <p className="mb-6 text-primary-foreground/80">معاينة مجانية وعرض سعر فوري — في أي مكان داخل مصر</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a href="tel:01011965099" className="inline-flex items-center gap-2 rounded-xl bg-background px-6 py-3 font-bold text-foreground shadow-elegant transition-transform hover:scale-105">
-              <Phone className="h-5 w-5" /> <span dir="ltr">01011965099</span>
-            </a>
-            <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-gradient-gold px-6 py-3 font-bold text-gold-foreground shadow-gold transition-transform hover:scale-105">
-              <MessageCircle className="h-5 w-5" /> واتساب مباشر
-            </a>
+      {/* Why Us: Trust Indicators */}
+      <section className="bg-white/2 py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              { icon: Tag, title: "أعلى سعر تقييم", desc: "نمتلك خبرة واسعة تتيح لنا تقديم أفضل عرض مالي في السوق المصري." },
+              { icon: Zap, title: "تنفيذ فوري وسريع", desc: "فريق المعاينة مجهز للتحرك فوراً وإتمام الصفقة في وقت قياسي." },
+              { icon: ShieldCheck, title: "أمان ومصداقية", desc: "تعامل رسمي وقانوني مع كافة المؤسسات، مع ضمان مسح البيانات الحساسة." },
+              { icon: Truck, title: "خدمة التوصيل", desc: "نتحمل كافة تكاليف النقل والخدمات اللوجستية من مقركم." },
+              { icon: Server, title: "تخصص في الجملة", desc: "قدرة على استيعاب وتوريد أكبر الكميات المطلوبة في السوق." },
+              { icon: ShieldCheck, title: "التزام كامل", desc: "نحن شركاؤكم في النجاح، نلتزم بالمواعيد والاتفاقات بدقة متناهية." },
+            ].map(({ icon: Icon, title, desc }, idx) => (
+              <div key={title} className="p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-white/5 to-transparent animate-fade-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <Icon className="mb-6 h-10 w-10 text-gold" />
+                <h3 className="mb-3 text-xl font-bold">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <SiteFooter />
+      {/* Final CTA */}
+      <section className="container mx-auto px-4 py-24">
+        <div className="relative overflow-hidden rounded-[40px] bg-gradient-primary p-12 md:p-20 text-center shadow-glow animate-fade-up">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+          <h2 className="relative mb-6 text-4xl font-black text-primary-foreground md:text-5xl">هل لديك أجهزة راكدة؟</h2>
+          <p className="relative mb-10 text-xl text-primary-foreground/80 max-w-2xl mx-auto">معاينة مجانية، تقييم عادل، ودفع فوري. انضم لقائمة عملائنا من كبرى الشركات والبنوك.</p>
+          <div className="relative flex flex-wrap justify-center gap-4">
+            <a href="tel:01011965099" className="inline-flex items-center gap-3 rounded-2xl bg-primary-foreground px-10 py-5 font-black text-primary shadow-2xl hover-lift">
+              <Phone className="h-6 w-6" /> اتصل بنا الآن
+            </a>
+            <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-2xl bg-gold px-10 py-5 font-black text-gold-foreground shadow-2xl hover-lift">
+              <MessageCircle className="h-6 w-6" /> واتساب مباشر
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
+
   );
 }
+
+export default Index;

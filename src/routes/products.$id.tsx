@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { productsStore, type Product } from "@/lib/products-store";
 import { Phone, MessageCircle, Package, ImageOff, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -29,12 +27,10 @@ function ProductDetail() {
   if (product === null) {
     return (
       <div className="min-h-screen bg-background">
-        <SiteHeader />
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-3xl font-bold">المنتج غير موجود</h1>
           <Link to="/products" search={{}} className="mt-4 inline-block text-primary hover:underline">العودة للمنتجات</Link>
         </div>
-        <SiteFooter />
       </div>
     );
   }
@@ -44,7 +40,6 @@ function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader />
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
@@ -109,7 +104,6 @@ function ProductDetail() {
           </div>
         </div>
       </div>
-      <SiteFooter />
     </div>
   );
 }

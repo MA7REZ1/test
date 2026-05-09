@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { auth, productsStore, DEFAULT_ADMIN_PASSWORD, type Product, type ProductCategory } from "@/lib/products-store";
 import { contractsStore, type ContractRequest, type ContractStatus } from "@/lib/contracts-store";
 import { Lock, Plus, Trash2, Pencil, X, ImagePlus, LogOut, KeyRound, Save, Handshake, Phone, Mail } from "lucide-react";
@@ -35,7 +33,6 @@ function Dashboard() {
   if (!authed) {
     return (
       <div className="min-h-screen bg-background">
-        <SiteHeader />
         <div className="container mx-auto flex max-w-md flex-col px-4 py-20">
           <div className="rounded-2xl bg-gradient-card p-8 shadow-elegant">
             <div className="mb-6 flex items-center gap-3">
@@ -51,7 +48,6 @@ function Dashboard() {
             <p className="mt-4 text-xs text-muted-foreground">كلمة المرور الافتراضية: <code className="rounded bg-muted px-2 py-0.5">{DEFAULT_ADMIN_PASSWORD}</code> — يمكنك تغييرها بعد الدخول.</p>
           </div>
         </div>
-        <SiteFooter />
       </div>
     );
   }
@@ -72,7 +68,6 @@ function DashboardInner({ onLogout }: { onLogout: () => void }) {
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader />
       <div className="container mx-auto px-4 py-10">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -129,7 +124,6 @@ function DashboardInner({ onLogout }: { onLogout: () => void }) {
       {editing && <EditModal product={editing} onClose={() => setEditing(null)} onSave={(p) => { productsStore.upsert(p); setEditing(null); }} />}
       {showPwModal && <PasswordModal onClose={() => setShowPwModal(false)} />}
 
-      <SiteFooter />
     </div>
   );
 }

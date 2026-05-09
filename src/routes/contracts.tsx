@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { contractsStore } from "@/lib/contracts-store";
 import { Handshake, CheckCircle2, Building2, Repeat, ShieldCheck, Phone, MessageCircle } from "lucide-react";
 
@@ -70,7 +68,6 @@ function ContractsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader />
 
       {/* Hero */}
       <section className="border-b border-border bg-gradient-card">
@@ -205,7 +202,6 @@ function ContractsPage() {
         </div>
       </section>
 
-      <SiteFooter />
     </div>
   );
 }
