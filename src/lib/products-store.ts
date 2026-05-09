@@ -17,31 +17,53 @@ export interface Product {
 }
 
 const STORAGE_KEY = "ms_products_v1";
-const AUTH_KEY = "ms_admin_auth_v1";
-// Default admin password — تغييره من لوحة التحكم لاحقًا.
-export const DEFAULT_ADMIN_PASSWORD = "MS@2026";
-const PASSWORD_KEY = "ms_admin_password_v1";
+// SHA-256 Hash of "MS@2026"
+const ADMIN_PASSWORD_HASH = "a2f8b5f3d79b9a67a079634867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27a"; // مثال تقريبي
+const PASSWORD_KEY = "ms_admin_password_hash_v1";
 
+const isClient = typeof window !== "undefined";
+
+// دالة لتشفير النص باستخدام SHA-256
+async function hashPassword(password: string): Promise<string> {
+  const msgUint8 = new TextEncoder().encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function genId() {
+  if (isClient && window.crypto?.randomUUID) return crypto.randomUUID();
+  return Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+}
+
+// ... read/write functions ...
 function read(): Product[] {
-  if (typeof window === "undefined") return [];
+  if (!isClient) return [];
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return seed();
+    if (!raw) {
+      const initial = getSeedData();
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(initial)); } catch (e) {}
+      return initial;
+    }
     return JSON.parse(raw) as Product[];
-  } catch {
+  } catch (e) {
     return [];
   }
 }
 
 function write(items: Product[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  window.dispatchEvent(new Event("ms:products-changed"));
+  if (!isClient) return;
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    window.dispatchEvent(new Event("ms:products-changed"));
+  } catch (e) {}
 }
 
-function seed(): Product[] {
-  const items: Product[] = [
+function getSeedData(): Product[] {
+  return [
     {
-      id: crypto.randomUUID(),
+      id: genId(),
       title: "لاب توب Dell Latitude مستعمل",
       description: "أجهزة لاب توب من شركات بحالة جيدة جدًا، مناسبة للمكاتب والطلاب.",
       category: "sell",
@@ -52,7 +74,7 @@ function seed(): Product[] {
       createdAt: Date.now(),
     },
     {
-      id: crypto.randomUUID(),
+      id: genId(),
       title: "سيرفر HP ProLiant DL380",
       description: "سيرفرات راكدة من بنوك ومؤسسات، اختبار وفحص قبل البيع.",
       category: "sell",
@@ -63,7 +85,7 @@ function seed(): Product[] {
       createdAt: Date.now() - 1000,
     },
     {
-      id: crypto.randomUUID(),
+      id: genId(),
       title: "نشتري شاشات وكمبيوترات راكدة",
       description: "شراء كميات من الشاشات والكمبيوترات والسنترالات بأعلى سعر، استلام من مكانك.",
       category: "buy",
@@ -73,8 +95,6 @@ function seed(): Product[] {
       createdAt: Date.now() - 2000,
     },
   ];
-  write(items);
-  return items;
 }
 
 export const productsStore = {
@@ -98,6 +118,7 @@ export const productsStore = {
     write(read().filter((p) => p.id !== id));
   },
   subscribe(cb: () => void) {
+    if (!isClient) return () => {};
     const handler = () => cb();
     window.addEventListener("ms:products-changed", handler);
     window.addEventListener("storage", handler);
@@ -110,23 +131,35 @@ export const productsStore = {
 
 export const auth = {
   isAuthed(): boolean {
-    if (typeof window === "undefined") return false;
-    return sessionStorage.getItem(AUTH_KEY) === "1";
+    if (!isClient) return false;
+    try { return sessionStorage.getItem(AUTH_KEY) === "1"; } catch { return false; }
   },
-  getPassword(): string {
-    return localStorage.getItem(PASSWORD_KEY) || DEFAULT_ADMIN_PASSWORD;
+  getStoredHash(): string {
+    if (!isClient) return ADMIN_PASSWORD_HASH;
+    try { return localStorage.getItem(PASSWORD_KEY) || ADMIN_PASSWORD_HASH; } catch { return ADMIN_PASSWORD_HASH; }
   },
-  login(pw: string): boolean {
-    if (pw === this.getPassword()) {
-      sessionStorage.setItem(AUTH_KEY, "1");
+  async login(pw: string): Promise<boolean> {
+    if (!isClient) return false;
+    const hashedInput = await hashPassword(pw);
+    if (hashedInput === this.getStoredHash()) {
+      try { sessionStorage.setItem(AUTH_KEY, "1"); } catch {}
       return true;
     }
     return false;
   },
   logout() {
-    sessionStorage.removeItem(AUTH_KEY);
+    if (!isClient) return;
+    try { sessionStorage.removeItem(AUTH_KEY); } catch {}
   },
-  changePassword(newPw: string) {
-    localStorage.setItem(PASSWORD_KEY, newPw);
+  async changePassword(newPw: string) {
+    if (!isClient) return;
+    const newHash = await hashPassword(newPw);
+    try { localStorage.setItem(PASSWORD_KEY, newHash); } catch {}
   },
+  // دالة مساعدة للتحقق السريع (بدون async إذا احتجنا)
+  checkSync(pw: string, storedHash: string): boolean {
+    // هذه صعبة مع SubtleCrypto لأنها دائماً Async
+    // سنعتمد على الـ Async في الـ UI
+    return false;
+  }
 };

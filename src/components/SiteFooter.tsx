@@ -1,4 +1,5 @@
-import { Phone, MessageCircle, MapPin } from "lucide-react";
+import { Phone, MessageCircle, MapPin, ShoppingCart } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 export function SiteFooter() {
   return (
@@ -19,6 +20,7 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> <a dir="ltr" href="tel:01011965099" className="hover:text-primary">01011965099</a></li>
             <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-primary" /> <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="hover:text-primary">واتساب مباشر</a></li>
+            <li className="flex items-center gap-2"><ShoppingCart className="h-4 w-4 text-primary" /> <Link to="/products?category=sell" className="hover:text-primary">تسوق منتجات</Link></li>
             <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> داخل جمهورية مصر العربية</li>
           </ul>
         </div>

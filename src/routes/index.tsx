@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, MessageCircle, ShoppingCart, Tag, Truck, ShieldCheck, Zap, Server, Monitor, Laptop, HardDrive } from "lucide-react";
+import { Phone, MessageCircle, ShoppingCart, Tag, Truck, ShieldCheck, Zap, Server, Monitor, Laptop, HardDrive, Router, PhoneCall, Cpu, Building2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -31,6 +31,9 @@ function Index() {
               <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-gold px-8 py-4 font-bold text-gold-foreground shadow-gold hover-lift">
                 <MessageCircle className="h-5 w-5 transition-transform group-hover:rotate-12" /> تواصل عبر واتساب
               </a>
+              <Link to="/products?cat=sell" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-primary px-8 py-4 font-bold text-primary-foreground shadow-primary hover-lift">
+                <ShoppingCart className="h-5 w-5 transition-transform group-hover:rotate-12" /> المنتجات للبيع
+              </Link>
               <a href="tel:01011965099" className="group inline-flex items-center gap-3 rounded-2xl bg-white/10 border border-white/20 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white/20 transition-all hover-lift">
                 <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" /> <span dir="ltr">01011965099</span>
               </a>
@@ -53,7 +56,7 @@ function Index() {
             </span>
           </Link>
 
-          <Link to="/products?category=sell" className="group glass p-10 rounded-3xl hover-lift animate-fade-up delay-200">
+          <Link to="/products?cat=sell" className="group glass p-10 rounded-3xl hover-lift animate-fade-up delay-200">
             <div className="mb-6 inline-flex p-4 rounded-2xl bg-primary/10 text-primary">
               <ShoppingCart className="h-10 w-10" />
             </div>
@@ -74,10 +77,14 @@ function Index() {
         </div>
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
           {[
-            { icon: Laptop, label: "أجهزة اللاب توب", desc: "جميع الموديلات" },
-            { icon: Server, label: "السيرفرات والشبكات", desc: "بنيتك التحتية" },
-            { icon: HardDrive, label: "السويتشات والتخزين", desc: "حلول متكاملة" },
-            { icon: Monitor, label: "الشاشات والمعدات", desc: "بكافة أنواعها" },
+            { icon: Laptop, label: "أجهزة اللاب توب", desc: "جميع الموديلات والمتكهنة" },
+            { icon: Server, label: "السيرفرات", desc: "جميع الأنواع والماركات" },
+            { icon: Router, label: "السويتشات", desc: "شبكات وتوصيل" },
+            { icon: Monitor, label: "الشاشات", desc: "بكافة أنواعها وأحجامها" },
+            { icon: PhoneCall, label: "السنترالات", desc: "أنظمة اتصالات" },
+            { icon: Cpu, label: "كمبيوترات", desc: "مكتبي ومحمول" },
+            { icon: HardDrive, label: "تخزين", desc: "هارد ديسك وذاكرة" },
+            { icon: Building2, label: "تصفيات شركات", desc: "رواكد ومتكهنة" },
           ].map(({ icon: Icon, label, desc }, idx) => (
             <div key={label} className={`glass p-8 rounded-3xl text-center hover-lift animate-fade-up`} style={{ animationDelay: `${idx * 0.1}s` }}>
               <div className="mx-auto mb-6 inline-flex p-4 rounded-2xl bg-white/5 text-primary group-hover:scale-110 transition-transform">
@@ -125,6 +132,9 @@ function Index() {
             <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-2xl bg-gold px-10 py-5 font-black text-gold-foreground shadow-2xl hover-lift">
               <MessageCircle className="h-6 w-6" /> واتساب مباشر
             </a>
+            <Link to="/products?cat=sell" className="inline-flex items-center gap-3 rounded-2xl bg-white/20 border border-white/30 px-10 py-5 font-black text-white backdrop-blur shadow-2xl hover-lift">
+              <ShoppingCart className="h-6 w-6" /> تصفح المنتجات
+            </Link>
           </div>
         </div>
       </section>
