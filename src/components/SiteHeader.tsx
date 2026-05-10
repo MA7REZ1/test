@@ -13,16 +13,15 @@ export function SiteHeader() {
             M&S
           </div>
           <div className="hidden sm:block">
-            <div className="text-sm font-bold leading-tight">M&S للإلكترونيات</div>
-            <div className="text-[11px] text-muted-foreground">شراء وبيع أجهزة الشركات</div>
+            <div className="text-sm font-bold leading-tight">M&S Recycling</div>
+            <div className="text-[11px] text-muted-foreground">إعادة تدوير المخلفات الإلكترونية</div>
           </div>
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 text-sm md:flex">
           <Link to="/" preload={false} className="hover:text-primary transition-colors" activeOptions={{ exact: true }} activeProps={{ className: "text-primary" }}>الرئيسية</Link>
-          <Link to="/products" preload={false} search={{ cat: "sell" }} className="hover:text-primary transition-colors">للبيع</Link>
-          <Link to="/products" preload={false} search={{ cat: "buy" }} className="hover:text-primary transition-colors">نشتري منك</Link>
+          <a href="#contact" className="hover:text-primary transition-colors">تخلص من مخلفاتك</a>
           <Link to="/contracts" preload={false} className="hover:text-primary transition-colors" activeProps={{ className: "text-primary" }}>تعاقد دائم</Link>
         </nav>
 
@@ -36,7 +35,7 @@ export function SiteHeader() {
           </a>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="flex items-center justify-center rounded-lg border border-border bg-card p-2 text-foreground md:hidden hover:bg-accent transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -50,8 +49,7 @@ export function SiteHeader() {
         <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden animate-fade-up">
           <nav className="container mx-auto flex flex-col p-4 text-sm font-semibold">
             <Link to="/" preload={false} onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg p-3 hover:bg-accent transition-colors" activeOptions={{ exact: true }} activeProps={{ className: "text-primary bg-accent" }}>الرئيسية</Link>
-            <Link to="/products" preload={false} search={{ cat: "sell" }} onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg p-3 hover:bg-accent transition-colors">للبيع</Link>
-            <Link to="/products" preload={false} search={{ cat: "buy" }} onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg p-3 hover:bg-accent transition-colors">نشتري منك</Link>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg p-3 hover:bg-accent transition-colors">تخلص من مخلفاتك</a>
             <Link to="/contracts" preload={false} onClick={() => setIsMobileMenuOpen(false)} className="rounded-lg p-3 hover:bg-accent transition-colors" activeProps={{ className: "text-primary bg-accent" }}>تعاقد دائم</Link>
           </nav>
         </div>
@@ -59,3 +57,4 @@ export function SiteHeader() {
     </header>
   );
 }
+

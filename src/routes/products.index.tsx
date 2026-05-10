@@ -11,8 +11,8 @@ export const Route = createFileRoute("/products/")({
   }),
   head: () => ({
     meta: [
-      { title: "المنتجات — M&S للإلكترونيات" },
-      { name: "description", content: "تصفح الأجهزة المعروضة للبيع وطلبات الشراء الحالية من شركة M&S للإلكترونيات." },
+      { title: "المنتجات — M&S Recycling للإلكترونيات" },
+      { name: "description", content: "تصفح الأجهزة المعروضة للبيع وطلبات الشراء الحالية من شركة M&S Recycling للإلكترونيات." },
     ],
   }),
   component: ProductsPage,
@@ -53,3 +53,4 @@ function ProductsPage() {
     </div>
   );
 }
+

@@ -7,8 +7,8 @@ import { Handshake, CheckCircle2, Building2, Repeat, ShieldCheck, Phone, Message
 export const Route = createFileRoute("/contracts")({
   head: () => ({
     meta: [
-      { title: "تعاقد مستمر — M&S لشراء الأجهزة الإلكترونية" },
-      { name: "description", content: "تعاقد مع M&S لشراء أجهزتكم الراكدة والمستعملة باستمرار: بنوك، مصانع، شركات ومؤسسات. أعلى سعر، استلام دوري، التزام تام." },
+      { title: "تعاقد مستمر — M&S Recycling لشراء الأجهزة الإلكترونية" },
+      { name: "description", content: "تعاقد مع M&S Recycling لشراء أجهزتكم الراكدة والمستعملة باستمرار: بنوك، مصانع، شركات ومؤسسات. أعلى سعر، استلام دوري، التزام تام." },
     ],
   }),
   component: ContractsPage,
@@ -195,7 +195,7 @@ function ContractsPage() {
                 إرسال طلب التعاقد
               </button>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                بإرسالك الطلب فأنت توافق على تواصل فريق M&S معك بشأن تفاصيل التعاقد.
+                بإرسالك الطلب فأنت توافق على تواصل فريق M&S Recycling معك بشأن تفاصيل التعاقد.
               </p>
             </div>
           </form>
@@ -225,3 +225,4 @@ function Field({
     </div>
   );
 }
+

@@ -6,7 +6,7 @@ import { Phone, MessageCircle, Package, ImageOff, ChevronLeft, ChevronRight } fr
 export const Route = createFileRoute("/products/$id")({
   head: () => ({
     meta: [
-      { title: "تفاصيل المنتج — M&S للإلكترونيات" },
+      { title: "تفاصيل المنتج — M&S Recycling للإلكترونيات" },
     ],
   }),
   component: ProductDetail,
@@ -107,3 +107,4 @@ function ProductDetail() {
     </div>
   );
 }
+

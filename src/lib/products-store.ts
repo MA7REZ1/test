@@ -17,9 +17,10 @@ export interface Product {
 }
 
 const STORAGE_KEY = "ms_products_v1";
-// SHA-256 Hash of "MS@2026"
-const ADMIN_PASSWORD_HASH = "a2f8b5f3d79b9a67a079634867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27a"; // مثال تقريبي
-const PASSWORD_KEY = "ms_admin_password_hash_v1";
+// SHA-256 Hash of "admin123"
+const ADMIN_PASSWORD_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+const PASSWORD_KEY = "ms_admin_password_hash_v2";
+const AUTH_KEY = "ms_admin_authed_v1";
 
 const isClient = typeof window !== "undefined";
 
