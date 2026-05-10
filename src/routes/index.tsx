@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, MessageCircle, ShoppingCart, Tag, Truck, ShieldCheck, Zap, Server, Monitor, Laptop, HardDrive, Router, PhoneCall, Cpu, Building2 } from "lucide-react";
+import heroImage from "@/assets/image.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -15,28 +16,35 @@ function Index() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-gold/10 rounded-full blur-[100px] animate-blob delay-500" />
         
         <div className="container relative mx-auto px-4 py-20">
-          <div className="max-w-3xl animate-fade-up">
-            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-sm font-medium text-gold animate-pulse-glow">
-              <Zap className="h-4 w-4" /> أعلى سعر في السوق المصري
-            </span>
-            <h1 className="mb-6 text-5xl font-black leading-tight md:text-7xl tracking-tight">
-              شركة <span className="text-gold">M&S</span> لشراء وبيع
-              <br />
-              <span className="text-gradient-shimmer animate-shimmer">الأجهزة الإلكترونية</span>
-            </h1>
-            <p className="mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed">
-              نحن المتخصصون في إعادة تدوير وتجارة الأجهزة الراكدة والمستعملة من الشركات والبنوك والمصانع. نضمن لك أعلى تقييم مالي وأسرع تنفيذ.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-gold px-8 py-4 font-bold text-gold-foreground shadow-gold hover-lift">
-                <MessageCircle className="h-5 w-5 transition-transform group-hover:rotate-12" /> تواصل عبر واتساب
-              </a>
-              <Link to="/products?cat=sell" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-primary px-8 py-4 font-bold text-primary-foreground shadow-primary hover-lift">
-                <ShoppingCart className="h-5 w-5 transition-transform group-hover:rotate-12" /> المنتجات للبيع
-              </Link>
-              <a href="tel:01011965099" className="group inline-flex items-center gap-3 rounded-2xl bg-white/10 border border-white/20 px-8 py-4 font-bold text-white backdrop-blur hover:bg-white/20 transition-all hover-lift">
-                <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" /> <span dir="ltr">01011965099</span>
-              </a>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="max-w-3xl animate-fade-up">
+              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-sm font-medium text-gold animate-pulse-glow">
+                <Zap className="h-4 w-4" /> أعلى سعر في السوق المصري
+              </span>
+              <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight md:text-7xl">
+                شركة <span className="text-gold">M&S</span> لشراء 
+                <br />
+                <span className="text-gradient-shimmer animate-shimmer">الأجهزة الإلكترونية</span>
+              </h1>
+              <p className="mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                نحن المتخصصون في إعادة تدوير وتجارة الأجهزة الراكدة والمستعملة من الشركات والبنوك والمصانع. نضمن لك أعلى تقييم مالي وأسرع تنفيذ.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-gold px-8 py-4 font-bold text-gold-foreground shadow-gold hover-lift">
+                  <MessageCircle className="h-5 w-5 transition-transform group-hover:rotate-12" /> تواصل عبر واتساب
+                </a>
+                <Link to="/products?cat=sell" className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-primary px-8 py-4 font-bold text-primary-foreground shadow-primary hover-lift">
+                  <ShoppingCart className="h-5 w-5 transition-transform group-hover:rotate-12" /> المنتجات للبيع
+                </Link>
+                <a href="tel:01011965099" className="group inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover-lift">
+                  <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" /> <span dir="ltr">01011965099</span>
+                </a>
+              </div>
+            </div>
+            
+            <div className="relative hidden animate-fade-up lg:block" style={{ animationDelay: "0.2s" }}>
+              <div className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-gradient-to-r from-primary/20 to-gold/20 opacity-50 blur-2xl" />
+              <img src={heroImage} alt="M&S Electronics" className="mx-auto w-full max-w-lg object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105 [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]" />
             </div>
           </div>
         </div>
