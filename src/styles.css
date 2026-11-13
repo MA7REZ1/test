@@ -1,3 +1,4 @@
+@import "./styles/thmanyah-font.css";
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -71,8 +72,8 @@
   --gold: oklch(0.82 0.14 85);
   --gold-foreground: oklch(0.18 0.04 80);
 
-  --font-display: "Cairo", "Tajawal", system-ui, sans-serif;
-  --font-body: "Cairo", "Tajawal", system-ui, sans-serif;
+  --font-display: "Thmanyah Serif Display", "Thmanyah Sans", "Cairo", "Tajawal", system-ui, sans-serif;
+  --font-body: "Thmanyah Sans", "Cairo", "Tajawal", system-ui, sans-serif;
 
   /* Gradients & shadows */
   --gradient-hero: linear-gradient(
