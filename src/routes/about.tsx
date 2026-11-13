@@ -75,10 +75,10 @@ function About() {
           <h2 className="text-3xl font-black mb-8 text-center">أرقامنا تتحدث عنا</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { icon: Factory, value: "٧+ سنين", label: "خبرة في السوق", color: "primary" },
-              { icon: Users, value: "+٢٠٠", label: "شريك موثوق", color: "gold" },
+              { icon: Factory, value: "١٠ + سنين", label: "خبرة في السوق", color: "primary" },
+              { icon: Users, value: "١٢٠٠+شريك", label: "شريك موثوق", color: "gold" },
               { icon: Globe, value: "٢٧ محافظة", label: "تغطية جغرافية", color: "primary" },
-              { icon: Leaf, value: "+٥،٥٠٠ طن", label: "مخلفات معاد تدويرها", color: "gold" },
+              { icon: Leaf, value: "٩٥،٥٠٠ +طن", label: "مخلفات معاد تدويرها", color: "gold" },
             ].map(({ icon: Icon, value, label, color }, idx) => (
               <div key={label} className="glass rounded-2xl p-6 text-center hover-lift">
                 <div className={`p-4 bg-${color}/20 rounded-2xl mx-auto mb-4 w-fit`}>
@@ -148,11 +148,11 @@ function About() {
               <p>
                 تأسست شركة M&S Recycling برؤية واضحة: معالجة التحدي المتزايد للمخلفات الإلكترونية في
                 مصر بطريقة آمنة ومستدامة. بدأنا كفريق صغير متحمس، واليوم نحن فخورون بأن نكون شريكاً
-                موثوقاً لأكثر من 200 شركة ومؤسسة في جميع أنحاء مصر.
+                موثوقاً لأكثر من 1200 شركة ومؤسسة في جميع أنحاء مصر.
               </p>
               <p>
-                على مدار السنوات السبع الماضية، قمنا بتطوير عملياتنا وتوسيع قدراتنا، مما سمح لنا
-                بمعالجة أكثر من 5,500 طن من المخلفات الإلكترونية. نحن نستخدم أحدث التقنيات ونتبع
+                على مدار السنوات العشر الماضية، قمنا بتطوير عملياتنا وتوسيع قدراتنا، مما سمح لنا
+                بمعالجة أكثر من 95,500 طن من المخلفات الإلكترونية. نحن نستخدم أحدث التقنيات ونتبع
                 أعلى معايير السلامة والبيئة لضمان أن كل عملية تدوير تتم بشكل مسؤول وفعال.
               </p>
               <p>
