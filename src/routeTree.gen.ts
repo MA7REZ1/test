@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContractsRouteImport } from './routes/contracts'
+import { Route as CompetitorAnalysisRouteImport } from './routes/competitor-analysis'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsIdRouteImport } from './routes/products.$id'
@@ -23,6 +25,16 @@ const DashboardRoute = DashboardRouteImport.update({
 const ContractsRoute = ContractsRouteImport.update({
   id: '/contracts',
   path: '/contracts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompetitorAnalysisRoute = CompetitorAnalysisRouteImport.update({
+  id: '/competitor-analysis',
+  path: '/competitor-analysis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,6 +55,8 @@ const ProductsIdRoute = ProductsIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/competitor-analysis': typeof CompetitorAnalysisRoute
   '/contracts': typeof ContractsRoute
   '/dashboard': typeof DashboardRoute
   '/products/$id': typeof ProductsIdRoute
@@ -50,6 +64,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/competitor-analysis': typeof CompetitorAnalysisRoute
   '/contracts': typeof ContractsRoute
   '/dashboard': typeof DashboardRoute
   '/products/$id': typeof ProductsIdRoute
@@ -58,6 +74,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/competitor-analysis': typeof CompetitorAnalysisRoute
   '/contracts': typeof ContractsRoute
   '/dashboard': typeof DashboardRoute
   '/products/$id': typeof ProductsIdRoute
@@ -65,12 +83,28 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contracts' | '/dashboard' | '/products/$id' | '/products/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/competitor-analysis'
+    | '/contracts'
+    | '/dashboard'
+    | '/products/$id'
+    | '/products/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contracts' | '/dashboard' | '/products/$id' | '/products'
+  to:
+    | '/'
+    | '/about'
+    | '/competitor-analysis'
+    | '/contracts'
+    | '/dashboard'
+    | '/products/$id'
+    | '/products'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/competitor-analysis'
     | '/contracts'
     | '/dashboard'
     | '/products/$id'
@@ -79,6 +113,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CompetitorAnalysisRoute: typeof CompetitorAnalysisRoute
   ContractsRoute: typeof ContractsRoute
   DashboardRoute: typeof DashboardRoute
   ProductsIdRoute: typeof ProductsIdRoute
@@ -99,6 +135,20 @@ declare module '@tanstack/react-router' {
       path: '/contracts'
       fullPath: '/contracts'
       preLoaderRoute: typeof ContractsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/competitor-analysis': {
+      id: '/competitor-analysis'
+      path: '/competitor-analysis'
+      fullPath: '/competitor-analysis'
+      preLoaderRoute: typeof CompetitorAnalysisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -127,6 +177,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CompetitorAnalysisRoute: CompetitorAnalysisRoute,
   ContractsRoute: ContractsRoute,
   DashboardRoute: DashboardRoute,
   ProductsIdRoute: ProductsIdRoute,

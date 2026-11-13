@@ -2,13 +2,25 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { contractsStore } from "@/lib/contracts-store";
-import { Handshake, CheckCircle2, Building2, Repeat, ShieldCheck, Phone, MessageCircle } from "lucide-react";
+import {
+  Handshake,
+  CheckCircle2,
+  Building2,
+  Repeat,
+  ShieldCheck,
+  Phone,
+  MessageCircle,
+} from "lucide-react";
 
 export const Route = createFileRoute("/contracts")({
   head: () => ({
     meta: [
       { title: "تعاقد مستمر — M&S Recycling لشراء الأجهزة الإلكترونية" },
-      { name: "description", content: "تعاقد مع M&S Recycling لشراء أجهزتكم الراكدة والمستعملة باستمرار: بنوك، مصانع، شركات ومؤسسات. أعلى سعر، استلام دوري، التزام تام." },
+      {
+        name: "description",
+        content:
+          "تعاقد مع M&S Recycling لشراء أجهزتكم الراكدة والمستعملة باستمرار: بنوك، مصانع، شركات ومؤسسات. أعلى سعر، استلام دوري، التزام تام.",
+      },
     ],
   }),
   component: ContractsPage,
@@ -68,7 +80,6 @@ function ContractsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-
       {/* Hero */}
       <section className="border-b border-border bg-gradient-card">
         <div className="container mx-auto px-4 py-14 md:py-20">
@@ -81,16 +92,28 @@ function ContractsPage() {
               اتفاقية شراء دائمة لأجهزتكم الراكدة والمستعملة
             </h1>
             <p className="text-base text-muted-foreground md:text-lg">
-              نوفّر للبنوك والمصانع والشركات والمؤسسات اتفاقية تعاقد مستمر لشراء الأجهزة الإلكترونية بشكل دوري — أعلى سعر،
-              استلام منتظم من مقركم، وإجراءات تكهين موثقة.
+              نوفّر للبنوك والمصانع والشركات والمؤسسات اتفاقية تعاقد مستمر لشراء الأجهزة الإلكترونية
+              بشكل دوري — أعلى سعر، استلام منتظم من مقركم، وإجراءات تكهين موثقة.
             </p>
           </div>
 
           <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
             {[
-              { icon: Building2, title: "موجّه للمؤسسات", text: "بنوك، مصانع، شركات، مستشفيات وفنادق." },
-              { icon: Repeat, title: "استلام دوري", text: "جدول معاينة واستلام شهري أو حسب الحاجة." },
-              { icon: ShieldCheck, title: "إجراءات موثقة", text: "محاضر استلام وتكهين رسمية لكل عملية." },
+              {
+                icon: Building2,
+                title: "موجّه للمؤسسات",
+                text: "بنوك، مصانع، شركات، مستشفيات وفنادق.",
+              },
+              {
+                icon: Repeat,
+                title: "استلام دوري",
+                text: "جدول معاينة واستلام شهري أو حسب الحاجة.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "إجراءات موثقة",
+                text: "محاضر استلام وتكهين رسمية لكل عملية.",
+              },
             ].map((f) => (
               <div key={f.title} className="rounded-2xl border border-border bg-card/60 p-5">
                 <f.icon className="mb-3 h-6 w-6 text-primary" />
@@ -131,13 +154,22 @@ function ContractsPage() {
                 <Phone className="h-4 w-4 text-primary" />
                 <span dir="ltr">01011965099</span>
               </a>
-              <a href="https://wa.me/message/PLVXE5WW4OAMB1" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-primary">
+              <a
+                href="https://wa.me/message/PLVXE5WW4OAMB1"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 hover:text-primary"
+              >
                 <MessageCircle className="h-4 w-4 text-primary" />
                 واتساب مباشر
               </a>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
-              يمكنكم أيضًا تصفّح <Link to="/products" search={{ cat: "buy" }} className="text-primary hover:underline">قائمة ما نشتريه</Link>.
+              يمكنكم أيضًا تصفّح{" "}
+              <Link to="/products" search={{ cat: "buy" }} className="text-primary hover:underline">
+                قائمة ما نشتريه
+              </Link>
+              .
             </p>
           </div>
         </aside>
@@ -153,7 +185,9 @@ function ContractsPage() {
               <CheckCircle2 className="mt-0.5 h-5 w-5 text-primary" />
               <div>
                 <div className="font-bold text-primary">تم استلام طلبكم بنجاح</div>
-                <div className="text-muted-foreground">سنتواصل معكم قريبًا لمناقشة تفاصيل التعاقد.</div>
+                <div className="text-muted-foreground">
+                  سنتواصل معكم قريبًا لمناقشة تفاصيل التعاقد.
+                </div>
               </div>
             </div>
           )}
@@ -164,18 +198,36 @@ function ContractsPage() {
             <Field name="contactName" label="اسم المسؤول *" error={errors.contactName} />
             <Field name="position" label="المسمى الوظيفي" />
             <Field name="phone" label="رقم الهاتف *" type="tel" error={errors.phone} dir="ltr" />
-            <Field name="email" label="البريد الإلكتروني" type="email" error={errors.email} dir="ltr" />
+            <Field
+              name="email"
+              label="البريد الإلكتروني"
+              type="email"
+              error={errors.email}
+              dir="ltr"
+            />
             <Field name="governorate" label="المحافظة" />
             <Field name="address" label="العنوان" />
             <div className="md:col-span-2">
-              <Field name="deviceTypes" label="أنواع الأجهزة المتاحة *" textarea error={errors.deviceTypes}
-                placeholder="مثال: لاب توب، كمبيوترات، سيرفرات، سويتشات، شاشات..." />
+              <Field
+                name="deviceTypes"
+                label="أنواع الأجهزة المتاحة *"
+                textarea
+                error={errors.deviceTypes}
+                placeholder="مثال: لاب توب، كمبيوترات، سيرفرات، سويتشات، شاشات..."
+              />
             </div>
-            <Field name="estimatedQuantity" label="كمية تقديرية" placeholder="مثال: 50 جهاز شهريًا" />
+            <Field
+              name="estimatedQuantity"
+              label="كمية تقديرية"
+              placeholder="مثال: 50 جهاز شهريًا"
+            />
             <div>
               <label className="mb-1 block text-sm font-semibold">دورية الاستلام</label>
-              <select name="frequency" defaultValue=""
-                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm">
+              <select
+                name="frequency"
+                defaultValue=""
+                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm"
+              >
                 <option value="">اختر...</option>
                 <option value="شهري">شهري</option>
                 <option value="ربع سنوي">ربع سنوي</option>
@@ -189,8 +241,10 @@ function ContractsPage() {
             </div>
 
             <div className="md:col-span-2">
-              <button type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-primary px-6 py-3 font-bold text-primary-foreground shadow-glow transition-transform hover:scale-[1.01]">
+              <button
+                type="submit"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-primary px-6 py-3 font-bold text-primary-foreground shadow-glow transition-transform hover:scale-[1.01]"
+              >
                 <Handshake className="h-5 w-5" />
                 إرسال طلب التعاقد
               </button>
@@ -201,18 +255,29 @@ function ContractsPage() {
           </form>
         </div>
       </section>
-
     </div>
   );
 }
 
 function Field({
-  name, label, type = "text", textarea = false, placeholder, error, dir,
+  name,
+  label,
+  type = "text",
+  textarea = false,
+  placeholder,
+  error,
+  dir,
 }: {
-  name: string; label: string; type?: string; textarea?: boolean;
-  placeholder?: string; error?: string; dir?: "ltr" | "rtl";
+  name: string;
+  label: string;
+  type?: string;
+  textarea?: boolean;
+  placeholder?: string;
+  error?: string;
+  dir?: "ltr" | "rtl";
 }) {
-  const cls = "w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none";
+  const cls =
+    "w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none";
   return (
     <div>
       <label className="mb-1 block text-sm font-semibold">{label}</label>
@@ -225,4 +290,3 @@ function Field({
     </div>
   );
 }
-

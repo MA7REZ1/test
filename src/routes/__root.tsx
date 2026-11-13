@@ -75,10 +75,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "M&S Recycling للإلكترونيات — شراء الأجهزة الراكدة والمستعملة" },
-      { name: "description", content: "شركة M&S Recycling لشراء الأجهزة الإلكترونية الراكدة والمستعملة من الشركات والبنوك والمصانع داخل مصر." },
+      {
+        name: "description",
+        content:
+          "شركة M&S Recycling لشراء الأجهزة الإلكترونية الراكدة والمستعملة من الشركات والبنوك والمصانع داخل مصر.",
+      },
       { name: "author", content: "M&S Recycling" },
       { property: "og:title", content: "M&S Recycling للإلكترونيات" },
-      { property: "og:description", content: "أعلى سعر لشراء الأجهزة الراكدة والمستعملة. خدمة شاملة لكل محافظات مصر." },
+      {
+        property: "og:description",
+        content: "أعلى سعر لشراء الأجهزة الراكدة والمستعملة. خدمة شاملة لكل محافظات مصر.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -106,4 +113,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

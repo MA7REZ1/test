@@ -27,9 +27,9 @@ const isClient = typeof window !== "undefined";
 // دالة لتشفير النص باستخدام SHA-256
 async function hashPassword(password: string): Promise<string> {
   const msgUint8 = new TextEncoder().encode(password);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 function genId() {
@@ -44,7 +44,9 @@ function read(): Product[] {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
       const initial = getSeedData();
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(initial)); } catch (e) {}
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+      } catch (e) {}
       return initial;
     }
     return JSON.parse(raw) as Product[];
@@ -133,34 +135,48 @@ export const productsStore = {
 export const auth = {
   isAuthed(): boolean {
     if (!isClient) return false;
-    try { return sessionStorage.getItem(AUTH_KEY) === "1"; } catch { return false; }
+    try {
+      return sessionStorage.getItem(AUTH_KEY) === "1";
+    } catch {
+      return false;
+    }
   },
   getStoredHash(): string {
     if (!isClient) return ADMIN_PASSWORD_HASH;
-    try { return localStorage.getItem(PASSWORD_KEY) || ADMIN_PASSWORD_HASH; } catch { return ADMIN_PASSWORD_HASH; }
+    try {
+      return localStorage.getItem(PASSWORD_KEY) || ADMIN_PASSWORD_HASH;
+    } catch {
+      return ADMIN_PASSWORD_HASH;
+    }
   },
   async login(pw: string): Promise<boolean> {
     if (!isClient) return false;
     const hashedInput = await hashPassword(pw);
     if (hashedInput === this.getStoredHash()) {
-      try { sessionStorage.setItem(AUTH_KEY, "1"); } catch {}
+      try {
+        sessionStorage.setItem(AUTH_KEY, "1");
+      } catch {}
       return true;
     }
     return false;
   },
   logout() {
     if (!isClient) return;
-    try { sessionStorage.removeItem(AUTH_KEY); } catch {}
+    try {
+      sessionStorage.removeItem(AUTH_KEY);
+    } catch {}
   },
   async changePassword(newPw: string) {
     if (!isClient) return;
     const newHash = await hashPassword(newPw);
-    try { localStorage.setItem(PASSWORD_KEY, newHash); } catch {}
+    try {
+      localStorage.setItem(PASSWORD_KEY, newHash);
+    } catch {}
   },
   // دالة مساعدة للتحقق السريع (بدون async إذا احتجنا)
   checkSync(pw: string, storedHash: string): boolean {
     // هذه صعبة مع SubtleCrypto لأنها دائماً Async
     // سنعتمد على الـ Async في الـ UI
     return false;
-  }
+  },
 };

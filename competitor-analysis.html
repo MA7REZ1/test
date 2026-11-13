@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الدراسة التنافسية - EERC و Energy Co</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Cairo", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1400px;
+      }
+      .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card-header {
+        border-radius: 15px 15px 0 0 !important;
+        font-weight: 700;
+      }
+      .eerc-card {
+        border-left: 5px solid #28a745;
+      }
+      .eerc-header {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+      }
+      .energy-card {
+        border-left: 5px solid #007bff;
+      }
+      .energy-header {
+        background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+        color: white;
+      }
+      .comparison-card {
+        border-left: 5px solid #ffc107;
+      }
+      .comparison-header {
+        background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+        color: white;
+      }
+      .checklist-card {
+        border-left: 5px solid #dc3545;
+      }
+      .checklist-header {
+        background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+        color: white;
+      }
+      .table {
+        font-size: 14px;
+      }
+      .badge-success {
+        background-color: #28a745;
+      }
+      .badge-danger {
+        background-color: #dc3545;
+      }
+      .badge-info {
+        background-color: #17a2b8;
+      }
+      .stat-box {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .nav-tabs .nav-link {
+        color: #fff;
+        font-weight: 600;
+      }
+      .nav-tabs .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .nav-tabs {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      pre {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .priority-high {
+        background-color: #dc3545;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+      .priority-medium {
+        background-color: #ffc107;
+        color: black;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+      .priority-low {
+        background-color: #28a745;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text-center text-white mb-5">
+        <h1 class="display-4 fw-bold">📊 الدراسة التنافسية</h1>
+        <p class="lead">تحليل شامل لشركات EERC و Energy Co</p>
+        <p class="small">تم التحديث: 13 نوفمبر 2026</p>
+      </div>
+
+      <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+          <button
+            class="nav-link active"
+            id="summary-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#summary"
+            type="button"
+          >
+            📋 الملخص
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="eerc-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#eerc"
+            type="button"
+          >
+            🟢 EERC
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="energy-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#energy"
+            type="button"
+          >
+            🔵 Energy Co
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="comparison-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#comparison"
+            type="button"
+          >
+            ⚖️ المقارنة
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            id="checklist-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#checklist"
+            type="button"
+          >
+            ✅ القائمة
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <!-- الملخص -->
+        <div class="tab-pane fade show active" id="summary">
+          <div class="card">
+            <div class="card-header comparison-header">
+              <h4 class="mb-0">📋 ملخص الدراسة التنافسية</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card eerc-card">
+                    <div class="card-header eerc-header">
+                      <h5 class="mb-0">🟢 EERC - الشركة الأكثر نضجاً</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled">
+                        <li>✅ تأسست 2016 (10 سنوات خبرة)</li>
+                        <li>✅ 530+ عميل</li>
+                        <li>✅ 4 شهادات ISO (بما في ذلك 27001)</li>
+                        <li>✅ شراكات دولية (BitRaser, CEDARE)</li>
+                        <li>✅ محتوى غني (أخبار، فيديوهات، ملفات)</li>
+                        <li>✅ تواصل سهل (مساعد ذكي، واتساب)</li>
+                        <li>❌ لا تخصص في البطاريات</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card energy-card">
+                    <div class="card-header energy-header">
+                      <h5 class="mb-0">🔵 Energy Co - الشركة المتخصصة الناشئة</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled">
+                        <li>✅ تأسست 2021</li>
+                        <li>✅ تخصص في البطاريات (ميزة فريدة)</li>
+                        <li>✅ قوة إنتاجية 600 طن/سنة</li>
+                        <li>✅ مصنعين منفصلين</li>
+                        <li>❌ محتوى ضعيف</li>
+                        <li>❌ لا شفافية في العملاء</li>
+                        <li>❌ لا نشاط إعلامي</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <h5 class="mb-3">💡 التوصيات السريعة</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <h6 class="text-danger">أولويات عالية</h6>
+                  <ol>
+                    <li>إضافة شهادة ISO 27001 (أمن المعلومات)</li>
+                    <li>نشر قائمة العملاء</li>
+                    <li>تحديد الإحصائيات (نسب التدوير، تقليل الكربون)</li>
+                    <li>توثيق مراحل العملية</li>
+                    <li>إنشاء ملف شركة PDF</li>
+                  </ol>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="text-warning">أولويات متوسطة</h6>
+                  <ol>
+                    <li>إضافة قسم أخبار وفعاليات</li>
+                    <li>تفعيل وسائل التواصل الاجتماعي</li>
+                    <li>إضافة واتساب مباشر</li>
+                    <li>إضافة الأسئلة الشائعة</li>
+                    <li>إنشاء قسم معرفة/مدونة</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EERC -->
+        <div class="tab-pane fade" id="eerc">
+          <div class="card eerc-card">
+            <div class="card-header eerc-header">
+              <h4 class="mb-0">🟢 EERC - البيانات الكاملة</h4>
+            </div>
+            <div class="card-body">
+              <pre id="eerc-content"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Energy Co -->
+        <div class="tab-pane fade" id="energy">
+          <div class="card energy-card">
+            <div class="card-header energy-header">
+              <h4 class="mb-0">🔵 Energy Co - البيانات الكاملة</h4>
+            </div>
+            <div class="card-body">
+              <pre id="energy-content"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- المقارنة -->
+        <div class="tab-pane fade" id="comparison">
+          <div class="card comparison-card">
+            <div class="card-header comparison-header">
+              <h4 class="mb-0">⚖️ المقارنة الشاملة</h4>
+            </div>
+            <div class="card-body">
+              <pre id="comparison-content"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- القائمة -->
+        <div class="tab-pane fade" id="checklist">
+          <div class="card checklist-card">
+            <div class="card-header checklist-header">
+              <h4 class="mb-0">✅ قائمة ما ينقصك</h4>
+            </div>
+            <div class="card-body">
+              <pre id="checklist-content"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // تحميل محتوى الملفات
+      async function loadFile(filename, elementId) {
+        try {
+          const response = await fetch(filename);
+          const text = await response.text();
+          document.getElementById(elementId).textContent = text;
+        } catch (error) {
+          document.getElementById(elementId).textContent = "خطأ في تحميل الملف: " + error.message;
+        }
+      }
+
+      // تحميل جميع الملفات
+      document.addEventListener("DOMContentLoaded", function () {
+        loadFile("EERC_Complete_Data.md", "eerc-content");
+        loadFile("EnergyCo_Complete_Data.md", "energy-content");
+        loadFile("Competitor_Comparison.md", "comparison-content");
+        loadFile("What_You_Need_Checklist.md", "checklist-content");
+      });
+    </script>
+  </body>
+</html>
