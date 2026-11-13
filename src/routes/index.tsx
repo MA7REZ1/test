@@ -395,8 +395,7 @@ function Index() {
           </div>
         </div>
       </section>
-
-      {/* Brands & Equipment Section */}
+      {/* Brands1 & Equipment Section */}
       <section className="bg-white/2 py-24 border-t border-white/5">
         <div className="container mx-auto px-4 text-center">
           <div className="mb-12 animate-fade-up">
